@@ -1,275 +1,640 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oqora — Nos offres</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Oqora, agence de croissance pour centres esthetiques. Offres, tarifs et garantie.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#127800;</text></svg>">
+<title>Tarifs Oqora</title>
+
 <style>
-  :root {
-    --bg: #0D0B0C;
-    --bg2: #141012;
-    --card: #1A1618;
-    --card2: #211C1F;
-    --rose: #9C3F6A;
-    --rose-l: #C45E8A;
-    --rose-glow: rgba(156,63,106,0.15);
-    --rose-border: rgba(156,63,106,0.4);
-    --text: #F5EEF1;
-    --muted: #8A7F84;
-    --faint: #2A2426;
-    --green: #3DBE7A;
+  :root{
+    --ground:#FFFFFF;
+    --band:#FCF7F1;          /* caramel très clair, une section sur deux */
+    --card:#FFFFFF;
+    --card-alt:#FCFAF8;
+    --ink:#171310;
+    --ink-soft:#645B54;
+    --ink-faint:#A0958C;
+    --rule:#ECE6E0;
+    --rule-strong:#DDD4CB;
+
+    /* Caramel Oqora, accent unique de la marque */
+    --accent:#A5713F;
+    --accent-ink:#7C5228;
+    --accent-wash:#FAF3EB;
+    --accent-light:#DCC0A0;
+
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: -apple-system,'Segoe UI',sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-  /* NAV */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; background: rgba(13,11,12,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--faint); }
-  .brand { font-size: 17px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; }
-  .nav-btn { background: var(--rose); color: #fff; padding: 10px 22px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600; }
+  *{box-sizing:border-box;}
 
-  /* HERO — ultra simple */
-  .hero { padding: 140px 24px 80px; text-align: center; max-width: 760px; margin: 0 auto; }
-  .hero-tag { display: inline-block; background: var(--rose-glow); border: 1px solid var(--rose-border); color: var(--rose-l); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 28px; }
-  .hero h1 { font-family: Georgia, serif; font-size: clamp(32px, 5.5vw, 58px); font-weight: 700; line-height: 1.1; margin-bottom: 20px; }
-  .hero h1 em { font-style: normal; color: var(--rose-l); }
-  .hero-sub { color: var(--muted); font-size: 18px; margin-bottom: 20px; }
-  .hero-price { font-size: 15px; color: var(--muted); }
-  .hero-price strong { color: var(--text); font-size: 18px; }
-  .hero-arrow { margin-top: 48px; display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
-  .arrow-line { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--rose), transparent); }
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
 
-  /* OFFRES — la pièce centrale */
-  .offers-section { padding: 0 24px 100px; max-width: 1140px; margin: 0 auto; }
-  .offers-title { text-align: center; margin-bottom: 12px; font-family: Georgia, serif; font-size: 28px; font-weight: 700; }
-  .offers-sub { text-align: center; color: var(--muted); font-size: 15px; margin-bottom: 48px; }
+  body{
+    background:var(--ground);color:var(--ink);font-family:var(--sans);
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;margin:0;
+  }
 
-  @media(max-width: 680px) { .offer-gets { grid-template-columns: 1fr !important; } }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem);}
 
-  .offer { background: var(--card); border: 1px solid var(--faint); border-radius: 18px; padding: 36px 28px; display: flex; flex-direction: column; position: relative; transition: border-color .25s, transform .2s; }
-  .offer:hover { border-color: var(--rose-border); transform: translateY(-4px); }
-  .offer.best { border-color: var(--rose-border); background: var(--card2); }
-  .offer.best::before { display: none; }
+  .bande{padding:clamp(3.5rem,9vw,6rem) 0;}
+  .bande.teinte{background:var(--band);}
 
-  /* En-tête de carte */
-  .offer-num { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--rose-l); font-weight: 700; margin-bottom: 10px; }
-  .offer-name { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
-  .offer-tagline { color: var(--muted); font-size: 13.5px; line-height: 1.55; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--faint); }
+  /* ---------- en-tête ---------- */
 
-  /* Prix mis en avant */
-  .offer-price { margin-bottom: 28px; }
-  .offer-price-num { font-size: 44px; font-weight: 900; letter-spacing: -2px; line-height: 1; }
-  .offer-price-sub { font-size: 13px; color: var(--muted); margin-top: 4px; }
-  .offer-price-note { display: inline-block; background: var(--rose-glow); color: var(--rose-l); font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin-top: 8px; border: 1px solid var(--rose-border); }
+  .entete-bande{padding:0;border-bottom:1px solid var(--rule);}
 
-  /* Ce que tu obtiens */
-  .offer-gets-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-  .offer-gets { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-  .offer-gets li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.5; }
-  .check { width: 20px; height: 20px; min-width: 20px; border-radius: 50%; background: rgba(61,190,122,0.12); border: 1px solid rgba(61,190,122,0.3); display: flex; align-items: center; justify-content: center; margin-top: 1px; }
-  .check svg { width: 10px; height: 10px; stroke: var(--green); fill: none; stroke-width: 2; stroke-linecap: round; }
+  .entete{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:1rem;padding-top:1.5rem;padding-bottom:1.5rem;flex-wrap:wrap;
+  }
 
-  /* SÉPARATEUR */
-  .divider { height: 1px; background: var(--faint); max-width: 1100px; margin: 0 auto; }
+  .marque{font-size:1.0625rem;font-weight:800;letter-spacing:.22em;}
 
-  /* DETAIL PREMIUM */
-  .premium-section { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
-  .section-eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--rose-l); font-weight: 700; margin-bottom: 14px; }
-  .section-title { font-family: Georgia, serif; font-size: clamp(26px, 4vw, 42px); font-weight: 700; margin-bottom: 14px; line-height: 1.15; }
-  .section-sub { color: var(--muted); font-size: 16px; max-width: 540px; margin-bottom: 48px; }
+  .actions{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;}
 
-  .benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
-  .benefit { background: var(--card); border: 1px solid var(--faint); border-radius: 12px; padding: 24px 26px; display: flex; gap: 16px; align-items: flex-start; transition: border-color .2s; }
-  .benefit:hover { border-color: var(--rose-border); }
-  .b-icon { font-size: 22px; width: 42px; height: 42px; min-width: 42px; background: var(--rose-glow); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
-  .b-title { font-weight: 700; font-size: 14.5px; margin-bottom: 4px; }
-  .b-desc { color: var(--muted); font-size: 13px; line-height: 1.6; }
+  .tel,.lien-essai{
+    display:inline-block;font-size:.9375rem;font-weight:700;
+    border-radius:999px;padding:.55rem 1.15rem;text-decoration:none;
+    white-space:nowrap;transition:background .18s,color .18s,border-color .18s;
+  }
 
-  /* PAIEMENT */
-  .payment-section { padding: 0 24px 100px; max-width: 1100px; margin: 0 auto; }
-  .pay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media(max-width: 600px) { .pay-grid { grid-template-columns: 1fr; } }
-  .pay-card { background: var(--card); border: 1px solid var(--faint); border-radius: 14px; padding: 32px; }
-  .pay-when { display: inline-block; background: var(--rose-glow); border: 1px solid var(--rose-border); color: var(--rose-l); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
-  .pay-title { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
-  .pay-desc { color: var(--muted); font-size: 14px; line-height: 1.65; }
+  .tel{color:#fff;background:var(--accent);}
+  a.tel:hover{background:var(--accent-ink);}
 
-  /* CTA */
-  .cta-section { text-align: center; padding: 100px 24px 120px; }
-  .cta-section h2 { font-family: Georgia, serif; font-size: clamp(28px, 4vw, 44px); font-weight: 700; margin-bottom: 16px; }
-  .cta-section p { color: var(--muted); font-size: 17px; margin-bottom: 40px; }
-  .cta-btn { display: inline-block; background: var(--rose); color: #fff; padding: 18px 48px; border-radius: 8px; text-decoration: none; font-size: 17px; font-weight: 700; transition: background .2s, transform .2s; }
-  .cta-btn:hover { background: var(--rose-l); transform: translateY(-2px); }
+  .lien-essai{color:var(--accent-ink);background:transparent;border:1px solid var(--accent-light);}
+  .lien-essai:hover{background:var(--accent-wash);}
 
-  footer { text-align: center; padding: 32px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--faint); }
+  .tel:focus-visible,.lien-essai:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px;}
+
+  /* ---------- titres ---------- */
+
+  .eyebrow{
+    font-size:.6875rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--accent-ink);font-weight:700;margin:0 0 1rem;
+  }
+
+  h1{
+    font-size:clamp(2.1rem,5.5vw,3.25rem);font-weight:800;letter-spacing:-.035em;
+    line-height:1.05;text-wrap:balance;margin:0 0 1rem;max-width:18ch;
+  }
+
+  h2{
+    font-size:clamp(1.6rem,4vw,2.1rem);font-weight:800;letter-spacing:-.03em;
+    line-height:1.12;text-wrap:balance;margin:0 0 .85rem;max-width:22ch;
+  }
+
+  .lede{font-size:1.0625rem;color:var(--ink-soft);max-width:54ch;margin:0;}
+
+  /* ---------- bandeau essai ---------- */
+
+  .essai{
+    background:var(--accent-wash);border-radius:16px;
+    padding:clamp(1.75rem,4vw,2.5rem);margin-top:clamp(2.5rem,6vw,3.5rem);
+  }
+
+  .essai-tete{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.75rem 1.5rem;flex-wrap:wrap;margin-bottom:1.75rem;
+  }
+
+  .essai h2{margin:0;max-width:16ch;}
+
+  .essai-places{
+    font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent-ink);background:#fff;border-radius:999px;padding:.4rem .85rem;white-space:nowrap;
+  }
+
+  .essai-etapes{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:1.25rem;margin:0;padding:0;list-style:none;
+  }
+
+  .essai-etapes li{
+    background:#fff;border-radius:12px;padding:1.25rem;
+    display:grid;grid-template-columns:1fr auto;gap:.3rem 1rem;
+  }
+
+  .essai-num{
+    grid-column:2;grid-row:1 / span 2;align-self:start;
+    display:flex;align-items:center;justify-content:center;
+    width:1.65rem;height:1.65rem;border-radius:7px;
+    background:var(--accent-wash);color:var(--accent-ink);
+    font-size:.8125rem;font-weight:800;font-variant-numeric:tabular-nums;
+  }
+
+  .essai-etapes strong{grid-column:1;grid-row:1;font-size:.9375rem;}
+  .essai-desc{grid-column:1;grid-row:2;font-size:.875rem;color:var(--ink-soft);}
+
+  .bonus{
+    display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:center;
+    background:#fff;border:1px solid var(--accent-light);border-radius:16px;
+    padding:1.75rem;margin-top:1.25rem;
+  }
+
+  .bonus-mot{
+    font-size:clamp(1.6rem,4vw,2.1rem);font-weight:800;letter-spacing:-.04em;
+    line-height:1;color:var(--accent);white-space:nowrap;
+  }
+
+  .bonus-mot small{
+    display:block;font-size:.6875rem;font-weight:800;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-faint);margin-top:.45rem;
+  }
+
+  .bonus p{margin:0;font-size:.9375rem;color:var(--ink-soft);}
+  .bonus strong{color:var(--ink);font-weight:700;}
+
+  .essai-note{margin:1.5rem 0 0;font-size:.8125rem;color:var(--ink-soft);}
+
+  /* première section centrée, sauf le bandeau d'essai */
+  .accroche{text-align:center;}
+  .accroche h1,.accroche .lede{margin-left:auto;margin-right:auto;}
+  .accroche .essai{text-align:left;}
+
+  /* ---------- cartes d'offres ---------- */
+
+  /* Trois colonnes de largeur identique, séparées par des gouttières
+     explicites : une large avant le cadre, une étroite à l'intérieur. */
+  .cartes{
+    display:grid;
+    grid-template-columns:1fr 2.2rem 1fr 1rem 1fr;
+    gap:0;
+    margin:clamp(2.5rem,6vw,3.5rem) 0 0;
+    align-items:stretch;
+  }
+
+  /* Cadre qui réunit Conversion et Premium. Hors flux, pour ne pas
+     rétrécir les colonnes qu'il entoure. Serré : 10 px autour. */
+  .enclos{
+    grid-column:3 / 6;grid-row:1;
+    border:1px solid var(--accent-light);border-radius:18px;
+    margin:-.625rem;pointer-events:none;
+  }
+
+  .c1{grid-column:1;grid-row:1;}
+  .c2{grid-column:3;grid-row:1;}
+  .c3{grid-column:5;grid-row:1;}
+
+  .carte{
+    background:var(--card-alt);border:1px solid var(--rule);border-radius:14px;
+    padding:1.75rem 1.6rem 2rem;display:flex;flex-direction:column;position:relative;
+    height:100%;
+  }
+
+  .carte.option{background:#fff;border-style:dashed;}
+
+  /* Emplacement réservé dans les trois cartes, pour que la pastille
+     ne décale pas le contenu de celle qui la porte. */
+  .chip-slot{display:block;min-height:1.5rem;margin-bottom:.75rem;}
+
+  .chip{
+    display:inline-block;font-size:.625rem;letter-spacing:.14em;
+    text-transform:uppercase;font-weight:800;color:#fff;background:var(--accent);
+    border-radius:999px;padding:.28rem .7rem;
+  }
+
+  .carte h3{
+    font-size:1.25rem;font-weight:800;letter-spacing:-.02em;
+    line-height:1.25;margin:0 0 .6rem;min-height:2.5em;
+  }
+
+  .carte-desc{color:var(--ink-soft);font-size:.9375rem;margin:0 0 1.5rem;min-height:6.4em;}
+
+  .prix{
+    font-size:clamp(2.4rem,5.5vw,3rem);font-weight:800;letter-spacing:-.045em;
+    line-height:1;font-variant-numeric:tabular-nums;margin:0;
+  }
+
+  .prix .des{
+    font-size:.9375rem;font-weight:600;letter-spacing:-.01em;
+    color:var(--ink-faint);display:block;margin-bottom:.35rem;min-height:1.5em;
+  }
+
+  .prix .mois{font-size:.9375rem;font-weight:600;letter-spacing:0;color:var(--ink-faint);}
+
+  .ttc{font-size:.8125rem;color:var(--ink-faint);margin:.5rem 0 0;}
+
+  .obtenez{
+    font-size:.625rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;
+    color:var(--ink-faint);margin:1.75rem 0 .9rem;padding-top:1.5rem;border-top:1px solid var(--rule);
+  }
+
+  .liste{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.7rem;}
+
+  .liste li{
+    display:grid;grid-template-columns:1.1rem 1fr;gap:.65rem;
+    font-size:.9375rem;line-height:1.45;align-items:start;
+  }
+
+  .liste svg{width:1.1rem;height:1.1rem;margin-top:.15rem;flex:none;color:var(--accent);}
+
+  /* ---------- tableau tarifaire ---------- */
+
+  /* Bascule sans JavaScript : deux boutons radio masqués pilotent
+     l'onglet actif et le tableau affiché. Fonctionne partout, y compris
+     dans les aperçus de fichiers qui n'exécutent pas de script. */
+  .radio-onglet{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
+
+  .bascule{display:flex;gap:1.75rem;margin:2rem 0 0;flex-wrap:wrap;}
+
+  .bascule label{
+    font-size:.9375rem;font-weight:600;color:var(--ink-faint);
+    border-bottom:2px solid transparent;padding:0 0 .5rem;cursor:pointer;
+    transition:color .18s,border-color .18s;
+  }
+
+  .bascule label:hover{color:var(--ink-soft);}
+
+  #r-une:checked ~ .bascule label[for="r-une"],
+  #r-illimite:checked ~ .bascule label[for="r-illimite"]{
+    color:var(--ink);border-bottom-color:var(--accent);
+  }
+
+  #r-une:focus-visible ~ .bascule label[for="r-une"],
+  #r-illimite:focus-visible ~ .bascule label[for="r-illimite"]{
+    outline:2px solid var(--accent-ink);outline-offset:3px;
+  }
+
+  .panneau-tarifs{display:none;}
+  #r-une:checked ~ #p-une,
+  #r-illimite:checked ~ #p-illimite{display:block;}
+
+  .tableau-carte{
+    margin-top:1.5rem;background:#fff;border:1px solid var(--rule-strong);
+    border-radius:14px;overflow:hidden;
+  }
+
+  .tableau-defile{overflow-x:auto;}
+
+  .tableau{
+    width:100%;border-collapse:collapse;
+    font-variant-numeric:tabular-nums;min-width:620px;
+  }
+
+  .tableau th{
+    background:#fff;color:var(--accent-ink);
+    font-size:.625rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;
+    text-align:left;padding:.9rem 1.15rem;
+    border-right:1px solid var(--rule);border-bottom:1px solid var(--rule-strong);
+  }
+
+  .tableau th:last-child,.tableau td:last-child{border-right:0;}
+
+  .tableau td{
+    background:#fff;padding:1.15rem;
+    border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    vertical-align:middle;
+  }
+
+  .tableau tbody tr:last-child td{border-bottom:0;}
+
+  .palier{font-weight:700;}
+
+  .marqueur{
+    display:inline-block;font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;background:var(--accent);border-radius:999px;
+    padding:.2rem .55rem;font-weight:800;margin-left:.5rem;vertical-align:middle;
+  }
+
+  .montant{
+    display:block;font-size:clamp(1.35rem,3.4vw,1.6rem);font-weight:800;
+    letter-spacing:-.035em;line-height:1.1;white-space:nowrap;
+  }
+
+  .ttc-min{display:block;font-size:.75rem;font-weight:500;color:var(--ink-faint);margin-top:.3rem;white-space:nowrap;}
+
+  .info{
+    background:#fff;border:1px solid var(--rule);border-radius:14px;
+    padding:1.5rem 1.6rem;margin-top:1.5rem;max-width:66ch;
+  }
+
+  .info p{margin:0;font-size:.9375rem;color:var(--ink-soft);}
+  .info p + p{margin-top:.75rem;}
+  .info strong{color:var(--ink);font-weight:700;}
+
+  /* ---------- garantie ---------- */
+
+  .garantie{
+    margin-top:clamp(2.5rem,6vw,3.5rem);background:var(--card-alt);
+    border:1px solid var(--rule);border-radius:16px;overflow:hidden;
+  }
+
+  .g-ligne{
+    display:grid;grid-template-columns:1fr auto auto;gap:1rem 1.75rem;align-items:center;
+    padding:1.75rem clamp(1.25rem,3vw,2rem);border-bottom:1px solid var(--rule);
+  }
+
+  .g-ligne:last-child{border-bottom:0;}
+
+  .g-offre{font-size:.9375rem;color:var(--ink-soft);}
+  .g-offre strong{display:block;color:var(--ink);font-weight:700;font-size:1rem;margin-bottom:.15rem;}
+
+  .g-chiffre{
+    font-size:clamp(2rem,5vw,2.6rem);font-weight:800;letter-spacing:-.045em;
+    line-height:1;font-variant-numeric:tabular-nums;justify-self:end;
+  }
+
+  .g-chiffre.accent{color:var(--accent);}
+
+  .g-unite{
+    font-size:.8125rem;color:var(--ink-faint);text-align:right;
+    line-height:1.35;justify-self:end;min-width:7rem;
+  }
+
+  .g-note{margin:1.25rem 0 0;font-size:.8125rem;color:var(--ink-faint);}
+
+  /* ---------- pied ---------- */
+
+  .pied{text-align:center;}
+  .pied h2{margin-left:auto;margin-right:auto;}
+  .pied .lede{margin:0 auto 2rem;}
+  .pied .tel{font-size:1.0625rem;padding:.85rem 1.75rem;}
+  .signature{margin:3rem 0 0;font-size:.8125rem;color:var(--ink-faint);}
+
+  [hidden]{display:none !important;}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+
+  @media (max-width:1000px){
+    .cartes{grid-template-columns:1fr;row-gap:1.75rem;}
+    .c1{grid-column:1;grid-row:1;}
+    .c2{grid-column:1;grid-row:2;}
+    .c3{grid-column:1;grid-row:3;}
+    .enclos{grid-column:1;grid-row:2 / 4;margin:-.625rem;}
+  }
+
+  @media (max-width:640px){
+    .carte-desc{min-height:0;}
+    .prix .des{min-height:0;}
+    .bonus{grid-template-columns:1fr;gap:1rem;}
+    .g-ligne{grid-template-columns:1fr auto;row-gap:.5rem;}
+    .g-offre{grid-column:1 / -1;}
+    .g-unite{min-width:0;}
+  }
 </style>
+
 </head>
 <body>
-
-<nav>
-  <div class="brand">Oqora</div>
-  <a href="tel:+33782129497" class="nav-btn">07 82 12 94 97</a>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-tag">Centres esthétiques</div>
-  <h1>Votre agenda rempli.<br><em>Ou vous ne payez pas.</em></h1>
-  <p class="hero-sub">On génère vos prospects, on les appelle, on cale les rendez-vous.</p>
-  <div class="hero-arrow">
-    <div class="arrow-line"></div>
-    Voir les offres
+<header class="bande entete-bande">
+  <div class="wrap entete">
+    <span class="marque">OQORA</span>
+    <span class="actions">
+      <a class="lien-essai" href="#essai">14 jours offerts</a>
+      <a class="tel" href="#contact">07 82 12 94 97</a>
+    </span>
   </div>
-</div>
+</header>
 
-<!-- OFFRES -->
-<div class="offers-section" style="padding-top: 32px;">
+<!-- ================= 1 · accroche + essai ================= -->
+<section class="bande">
+  <div class="wrap accroche">
+    <p class="eyebrow">Centres esthétiques</p>
+    <h1>Votre agenda rempli. Ou vous ne payez pas.</h1>
+    <p class="lede">
+      On génère vos prospects, on les appelle, on cale les rendez-vous.
+      Vous vous occupez de vos soins.
+    </p>
 
-  <!-- LAYOUT : Offre 1 seule | Groupe Offre 2 + Premium -->
-  <div style="display:grid; grid-template-columns:1fr 2fr; gap:16px; align-items:stretch;">
-
-    <!-- OFFRE 1 -->
-    <div class="offer">
-      <div class="offer-name">Acquisition</div>
-      <p class="offer-tagline">On crée vos pubs et vous amène des prospects qualifiés. Vous gérez les appels vous-même.<br><br></p>
-      <div class="offer-price">
-        <div class="offer-price-num">500 €</div>
+    <div class="essai" id="essai">
+      <div class="essai-tete">
+        <h2>Commencez par 14 jours offerts.</h2>
+        <span class="essai-places">3 places par mois</span>
       </div>
-      <div class="offer-gets-title">Ce que vous obtenez</div>
-      <ul class="offer-gets">
-        <li><span class="check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>Création et gestion de vos publicités Meta</li>
-        <li><span class="check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>Ciblage des personnes intéressées par vos soins</li>
-        <li><span class="check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>Prospects centralisés dans votre CRM</li>
-        <li><span class="check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>Reporting mensuel</li>
+      <ul class="essai-etapes">
+        <li>
+          <span class="essai-num">1</span>
+          <strong>On lance tout</strong>
+          <span class="essai-desc">Publicités, intelligence artificielle, CRM, appels : le système complet, sans rien vous facturer.</span>
+        </li>
+        <li>
+          <span class="essai-num">2</span>
+          <strong>Vous voyez les résultats</strong>
+          <span class="essai-desc">Vos premiers prospects arrivent, vos premiers rendez-vous se calent.</span>
+        </li>
+        <li>
+          <span class="essai-num">3</span>
+          <strong>Vous décidez à J+14</strong>
+          <span class="essai-desc">Si vous continuez, on garde tout ce qu'on a construit. Sinon, on s'arrête là.</span>
+        </li>
       </ul>
+      <div class="bonus">
+        <span class="bonus-mot">1/2 journée<small>de tournage offerte</small></span>
+        <p><strong>Si vous vous engagez sur trois mois à la fin de l'essai</strong>, on vient filmer dans votre institut et vous repartez avec des vidéos conçues pour vos publicités.</p>
+      </div>
+
+      <p class="essai-note">Seul le budget publicitaire reste à votre charge pendant l'essai, payé directement à Meta.</p>
     </div>
+  </div>
+</section>
 
-    <!-- GROUPE : Offre 2 + Option Premium liées -->
-    <div style="border:1px solid var(--rose-border); border-radius:20px; padding:6px; background:var(--rose-glow); display:flex; flex-direction:column;">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; flex:1;">
+<!-- ================= 3 · nos offres ================= -->
+<section class="bande">
+  <div class="wrap">
+    <p class="eyebrow">Nos offres</p>
+    <h2>Trois formules, selon ce que vous voulez déléguer.</h2>
 
-      <!-- OFFRE 2 -->
-      <div class="offer best" style="border-radius:14px;">
-        <div class="offer-name">Acquisition + Conversion</div>
-        <p class="offer-tagline">On gère tout — des pubs jusqu'aux rendez-vous dans votre agenda. Vous n'avez rien à faire.</p>
-        <div class="offer-price">
-          <div class="offer-price-num">dès 730 €</div>
-        </div>
-        <div class="offer-gets-title">Ce que vous obtenez</div>
-        <ul class="offer-gets">
-          <li><span class="check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>Tout l'Offre 1 inclus</li>
-          <li><span class="check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>Nos équipes appellent vos prospects</li>
-          <li><span class="check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>RDV calés dans votre agenda</li>
-          <li><span class="check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>Relance des prospects injoignables</li>
+    <div class="cartes">
+
+      <div class="enclos" aria-hidden="true"></div>
+
+      <div class="carte c1">
+        <span class="chip-slot"></span>
+        <h3>Acquisition</h3>
+        <p class="carte-desc">On crée vos publicités et on vous amène des prospects qualifiés. Vous gérez les appels vous-même.</p>
+        <p class="prix"><span class="des">&nbsp;</span>450 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">540 &euro; TTC</p>
+        <p class="obtenez">Ce que vous obtenez</p>
+        <ul class="liste">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Création et gestion de vos publicités Meta</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Ciblage des personnes intéressées par vos soins</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Prospects centralisés dans votre CRM</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Reporting mensuel</span></li>
         </ul>
       </div>
 
-      <!-- OPTION PREMIUM -->
-      <div class="offer" style="border-radius:14px; border-color:var(--faint); position:relative;">
-        <div style="position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--card2); border:1px solid var(--rose-border); color:var(--rose-l); font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:4px 14px; border-radius:0 0 12px 12px; white-space:nowrap;">✦ Option</div>
-        <div style="margin-top:6px;">
-          <div class="offer-name">Conversion Premium</div>
-          <p class="offer-tagline">L'IA contacte vos prospects en quelques secondes. Un humain prend le relais. Aucun RDV n'est perdu.</p>
-          <div class="offer-price">
-            <div class="offer-price-num">dès 790 €</div>
-          </div>
-          <div class="offer-gets-title">Ce que vous obtenez en plus</div>
-          <ul class="offer-gets">
-            <li><span class="check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>Contact IA ultra-rapide dès la réception</li>
-            <li><span class="check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>Un humain gère vos messages et répond à vos prospects</li>
-            <li><span class="check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>Prise de RDV par message directement dans votre agenda</li>
-            <li><span class="check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>Confirmation par appel le jour J</li>
-            <li><span class="check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>Relance des absents par appel et par message</li>
-            <li><span class="check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>Gestion des annulations</li>
-            <li><span class="check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>Réponses aux commentaires</li>
-            <li><span class="check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1"/></svg></span>Campagne email marketing (nurturing)</li>
+      <div class="carte c2">
+          <span class="chip-slot"></span>
+          <h3>Acquisition + Conversion</h3>
+          <p class="carte-desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda. Vous n'avez rien à faire.</p>
+          <p class="prix"><span class="des">à partir de</span>700 &euro; <span class="mois">/ mois</span></p>
+          <p class="ttc">840 &euro; TTC</p>
+          <p class="obtenez">Ce que vous obtenez</p>
+          <ul class="liste">
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Tout l'Acquisition inclus</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Nos équipes appellent vos prospects</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Rendez-vous calés dans votre agenda</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Jusqu'à 4 relances des prospects injoignables</span></li>
           </ul>
         </div>
+
+      <div class="carte c3 option">
+          <span class="chip-slot"><span class="chip">Option</span></span>
+          <h3>Conversion Premium</h3>
+          <p class="carte-desc">L'IA contacte vos prospects en quelques secondes. Un humain prend le relais. Aucun rendez-vous n'est perdu.</p>
+          <p class="prix"><span class="des">à partir de</span>799 &euro; <span class="mois">/ mois</span></p>
+          <p class="ttc">958,80 &euro; TTC</p>
+          <p class="obtenez">Ce que vous obtenez en plus</p>
+          <ul class="liste">
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Contact IA ultra-rapide dès la réception du prospect</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Un humain gère vos messages et répond à vos prospects</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Prise de rendez-vous par message, directement dans votre agenda</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Confirmation par appel le jour&nbsp;J</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Relance des absents par appel et par message</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Gestion des annulations</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Réponses aux commentaires sous vos publicités</span></li>
+          </ul>
       </div>
 
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- GRILLE TARIFAIRE EXACTE -->
-<div class="premium-section">
-  <div class="section-eyebrow">Grille tarifaire</div>
-  <h2 class="section-title">Votre tarif exact,<br>selon votre volume</h2>
-  <p class="section-sub">Le nombre de prospects varie chaque mois selon votre budget pub. Voici exactement ce que vous payez dans chaque cas.</p>
-
-  <!-- Tableau visuel -->
-  <div style="background:var(--card);border:1px solid var(--faint);border-radius:16px;overflow:hidden;">
-    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;background:var(--card2);border-bottom:1px solid var(--faint);">
-      <div style="padding:16px 24px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Prospects / mois</div>
-      <div style="padding:16px 24px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-align:center;">Acquisition + Conversion</div>
-      <div style="padding:16px 24px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-align:center;">+ Premium</div>
-    </div>
-    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;border-bottom:1px solid var(--faint);">
-      <div style="padding:22px 24px;"><div style="font-weight:700;">Moins de 80</div></div>
-      <div style="padding:22px 24px;text-align:center;"><div style="font-size:26px;font-weight:800;letter-spacing:-1px;">730 €</div><div style="font-size:12px;color:var(--muted);">/mois</div></div>
-      <div style="padding:22px 24px;text-align:center;"><div style="font-size:26px;font-weight:800;letter-spacing:-1px;">790 €</div><div style="font-size:12px;color:var(--muted);">/mois</div></div>
-    </div>
-    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;border-bottom:1px solid var(--faint);background:rgba(156,63,106,0.05);">
-      <div style="padding:22px 24px;">
-        <div style="font-weight:700;">Entre 80 et 150</div>
-      </div>
-      <div style="padding:22px 24px;text-align:center;"><div style="font-size:26px;font-weight:800;letter-spacing:-1px;">797 €</div><div style="font-size:12px;color:var(--muted);">/mois</div></div>
-      <div style="padding:22px 24px;text-align:center;"><div style="font-size:26px;font-weight:800;letter-spacing:-1px;">877 €</div><div style="font-size:12px;color:var(--muted);">/mois</div></div>
-    </div>
-    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;">
-      <div style="padding:22px 24px;"><div style="font-weight:700;">Plus de 150</div></div>
-      <div style="padding:22px 24px;text-align:center;"><div style="font-size:26px;font-weight:800;letter-spacing:-1px;">849 €</div><div style="font-size:12px;color:var(--muted);">/mois</div></div>
-      <div style="padding:22px 24px;text-align:center;"><div style="font-size:26px;font-weight:800;letter-spacing:-1px;">949 €</div><div style="font-size:12px;color:var(--muted);">/mois</div></div>
     </div>
   </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- SECTION GARANTIE -->
-<section style="padding: 100px 24px; max-width: 900px; margin: 0 auto;">
-  <div style="font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--rose-l); font-weight:700; margin-bottom:14px;">Notre garantie</div>
-  <h2 style="font-family:Georgia,serif; font-size:clamp(26px,4vw,42px); font-weight:700; margin-bottom:48px; line-height:1.15;">Un engagement clair<br>sur vos résultats.</h2>
-
-  <div style="background:var(--card); border:1px solid var(--faint); border-radius:16px; overflow:hidden;">
-    <table style="width:100%; border-collapse:collapse;">
-      <tr style="border-bottom:1px solid var(--faint);">
-        <td style="padding:24px 28px; font-size:14px; color:var(--muted); width:50%;">Offre <strong style="color:var(--text);">Acquisition</strong><br>On génère vos prospects</td>
-        <td style="padding:24px 28px; font-size:38px; font-weight:900; letter-spacing:-1px; text-align:right;">35+</td>
-        <td style="padding:24px 28px; font-size:13px; color:var(--muted); text-align:right;">prospects<br>garantis / mois</td>
-      </tr>
-      <tr style="border-bottom:1px solid var(--faint); background:var(--card2);">
-        <td style="padding:24px 28px; font-size:14px; color:var(--muted);">Offre <strong style="color:var(--text);">Acquisition + Conversion</strong><br>On cale vos rendez-vous</td>
-        <td style="padding:24px 28px; font-size:38px; font-weight:900; letter-spacing:-1px; color:var(--text); text-align:right;">10+</td>
-        <td style="padding:24px 28px; font-size:13px; color:var(--muted); text-align:right;">RDV<br>garantis / mois</td>
-      </tr>
-      <tr>
-        <td style="padding:24px 28px; font-size:14px; font-weight:600;">Si l'objectif n'est pas atteint</td>
-        <td style="padding:24px 28px; font-size:38px; font-weight:900; letter-spacing:-1px; color:var(--rose-l); text-align:right;">÷2</td>
-        <td style="padding:24px 28px; font-size:13px; color:var(--muted); text-align:right;">sur votre<br>facture ce mois-là</td>
-      </tr>
-    </table>
-  </div>
-  <p style="font-size:13px; color:var(--muted); margin-top:12px; padding:0 4px;">Mesuré via votre CRM · Applicable à partir de 20 €/jour de budget pub</p>
-
 </section>
 
-<div class="divider"></div>
+<!-- ================= 4 · grille tarifaire ================= -->
+<section class="bande teinte">
+  <div class="wrap">
+    <p class="eyebrow">Grille tarifaire</p>
+    <h2>Votre tarif exact, selon votre volume.</h2>
+    <p class="lede">
+      Votre volume de prospects change d'un mois à l'autre.
+      Voici exactement ce que vous payez dans chaque cas.
+    </p>
 
-<!-- CTA -->
-<div class="cta-section" id="contact">
-  <h2>Vous voulez en savoir plus ?</h2>
-  <p>Discutons de votre situation et de l'offre qui vous correspond.</p>
-  <a href="tel:+33782129497" class="cta-btn">07 82 12 94 97</a>
-</div>
+    <input class="radio-onglet" type="radio" name="campagnes" id="r-une" checked>
+    <input class="radio-onglet" type="radio" name="campagnes" id="r-illimite">
 
-<footer>
-  <div style="font-size:14px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">OQORA</div>
-  <div>Agence de croissance pour centres esthétiques</div>
+    <div class="bascule">
+      <label for="r-une">Une campagne</label>
+      <label for="r-illimite">Campagnes illimitées</label>
+    </div>
+
+    <div class="panneau-tarifs" id="p-une">
+      <div class="tableau-carte">
+        <div class="tableau-defile">
+          <table class="tableau">
+            <thead>
+              <tr>
+                <th scope="col">Prospects par mois</th>
+                <th scope="col">Acquisition</th>
+                <th scope="col">Acquisition + Conversion</th>
+                <th scope="col">Avec Premium</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="palier">Moins de 80</td>
+                <td><span class="montant">450 &euro;</span><span class="ttc-min">540 &euro; TTC</span></td>
+                <td><span class="montant">700 &euro;</span><span class="ttc-min">840 &euro; TTC</span></td>
+                <td><span class="montant">799 &euro;</span><span class="ttc-min">958,80 &euro; TTC</span></td>
+              </tr>
+              <tr class="vedette">
+                <td class="palier">80 &agrave; 149</td>
+                <td><span class="montant">450 &euro;</span><span class="ttc-min">540 &euro; TTC</span></td>
+                <td><span class="montant">800 &euro;</span><span class="ttc-min">960 &euro; TTC</span></td>
+                <td><span class="montant">899 &euro;</span><span class="ttc-min">1 078,80 &euro; TTC</span></td>
+              </tr>
+              <tr>
+                <td class="palier">150 et plus</td>
+                <td><span class="montant">450 &euro;</span><span class="ttc-min">540 &euro; TTC</span></td>
+                <td><span class="montant">900 &euro;</span><span class="ttc-min">1 080 &euro; TTC</span></td>
+                <td><span class="montant">999 &euro;</span><span class="ttc-min">1 198,80 &euro; TTC</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="panneau-tarifs" id="p-illimite">
+      <div class="tableau-carte">
+        <div class="tableau-defile">
+          <table class="tableau">
+            <thead>
+              <tr>
+                <th scope="col">Prospects par mois</th>
+                <th scope="col">Acquisition</th>
+                <th scope="col">Acquisition + Conversion</th>
+                <th scope="col">Avec Premium</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="palier">Moins de 80</td>
+                <td><span class="montant">500 &euro;</span><span class="ttc-min">600 &euro; TTC</span></td>
+                <td><span class="montant">750 &euro;</span><span class="ttc-min">900 &euro; TTC</span></td>
+                <td><span class="montant">849 &euro;</span><span class="ttc-min">1 018,80 &euro; TTC</span></td>
+              </tr>
+              <tr class="vedette">
+                <td class="palier">80 &agrave; 149</td>
+                <td><span class="montant">500 &euro;</span><span class="ttc-min">600 &euro; TTC</span></td>
+                <td><span class="montant">850 &euro;</span><span class="ttc-min">1 020 &euro; TTC</span></td>
+                <td><span class="montant">949 &euro;</span><span class="ttc-min">1 138,80 &euro; TTC</span></td>
+              </tr>
+              <tr>
+                <td class="palier">150 et plus</td>
+                <td><span class="montant">500 &euro;</span><span class="ttc-min">600 &euro; TTC</span></td>
+                <td><span class="montant">950 &euro;</span><span class="ttc-min">1 140 &euro; TTC</span></td>
+                <td><span class="montant">1 049 &euro;</span><span class="ttc-min">1 258,80 &euro; TTC</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="info">
+      <p><strong>Quand vous payez.</strong> L'acquisition en début de mois. La conversion en fin de mois, une fois qu'on sait combien de prospects vous avez reçus.</p>
+      <p><strong>Le budget publicitaire.</strong> Vous le versez directement à Meta, il n'est pas compris dans nos tarifs. Plus il est élevé, plus vous recevez de prospects. Un budget stable donne de meilleures performances.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5 · garantie ================= -->
+<section class="bande">
+  <div class="wrap">
+    <p class="eyebrow">Notre garantie</p>
+    <h2>Un engagement clair sur vos résultats.</h2>
+
+    <div class="garantie">
+      <div class="g-ligne">
+        <span class="g-offre"><strong>Offre Acquisition</strong>On génère vos prospects</span>
+        <span class="g-chiffre">35+</span>
+        <span class="g-unite">prospects<br>garantis / mois</span>
+      </div>
+      <div class="g-ligne">
+        <span class="g-offre"><strong>Offre Acquisition + Conversion</strong>On cale vos rendez-vous</span>
+        <span class="g-chiffre">10+</span>
+        <span class="g-unite">rendez-vous<br>garantis / mois</span>
+      </div>
+      <div class="g-ligne">
+        <span class="g-offre"><strong>Si l'objectif n'est pas atteint</strong></span>
+        <span class="g-chiffre accent">&divide;2</span>
+        <span class="g-unite">sur votre<br>facture ce mois-là</span>
+      </div>
+    </div>
+
+    <p class="g-note">
+      Mesuré via votre CRM, doublons et faux contacts exclus &middot;
+      Applicable à partir de 20 &euro; / jour de budget publicitaire &middot;
+      Au-delà, les objectifs garantis augmentent
+    </p>
+  </div>
+</section>
+
+<!-- ================= 6 · contact ================= -->
+<footer class="bande teinte pied" id="contact">
+  <div class="wrap">
+    <h2>On en parle&nbsp;?</h2>
+    <p class="lede">
+      Un appel de quinze minutes pour regarder votre situation
+      et vous dire quelle formule vous correspond.
+    </p>
+    <span class="tel">07 82 12 94 97</span>
+    <p class="signature">OQORA &middot; Agence de croissance pour centres esthétiques</p>
+  </div>
 </footer>
 
 </body>
