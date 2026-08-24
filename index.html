@@ -10,20 +10,21 @@
 <style>
   :root{
     --ground:#FFFFFF;
-    --band:#FCF7F1;          /* caramel très clair, une section sur deux */
+    --band:#f7f8f9;          /* platine très clair, une section sur deux */
     --card:#FFFFFF;
-    --card-alt:#FCFAF8;
-    --ink:#171310;
-    --ink-soft:#645B54;
-    --ink-faint:#A0958C;
-    --rule:#ECE6E0;
-    --rule-strong:#DDD4CB;
+    --card-alt:#f7f8f9;
+    --ink:#22262b;
+    --ink-soft:#50575e;
+    --ink-faint:#626a72;
+    --rule:#dde1e5;
+    --rule-strong:#c4cad0;
 
-    /* Caramel Oqora, accent unique de la marque */
-    --accent:#A5713F;
-    --accent-ink:#7C5228;
-    --accent-wash:#FAF3EB;
-    --accent-light:#DCC0A0;
+    /* Platine Oqora, échelle achromatique : la hiérarchie se fait
+       par la valeur et par la graisse, jamais par la teinte. */
+    --accent:#40464c;
+    --accent-ink:#33383d;
+    --accent-wash:#eff1f3;
+    --accent-light:#8d959d;
 
     --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
@@ -40,8 +41,20 @@
 
   .wrap{max-width:1060px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem);}
 
+  /* Signature de marque, reprise de la barre latérale du CRM. Employé une
+     seule fois dans la page, en filet net de 4 px : jamais en fond de
+     section, et jamais sous du texte. */
+  .filet-marque{
+    height:4px;
+    background:linear-gradient(90deg,#c3c9cf 0%,#aab1b8 30%,#8f979f 58%,#767e87 80%,#5f676f 100%);
+  }
+
   .bande{padding:clamp(3.5rem,9vw,6rem) 0;}
-  .bande.teinte{background:var(--band);}
+  /* Bandes grises : le dégradé du CRM, mêmes arrêts et même sens, remonté
+     en haut de l'échelle platine pour que l'encre garde son contraste. */
+  .bande.teinte{
+    background:linear-gradient(90deg,#f7f8f9 0%,#eff1f3 30%,#e6e9ec 58%,#dde1e5 80%,#d2d7dc 100%);
+  }
 
   /* ---------- en-tête ---------- */
 
@@ -91,8 +104,12 @@
 
   /* ---------- bandeau essai ---------- */
 
+  /* Surfaces posées sur du blanc : même rampe, décalée d'un cran vers le bas
+     pour garder leur bord visible contre la page. Le dégradé suit le grand
+     axe de la surface — horizontal ici, vertical sur les cartes. */
   .essai{
-    background:var(--accent-wash);border-radius:16px;
+    background:linear-gradient(90deg,#eff1f3 0%,#e6e9ec 30%,#dde1e5 58%,#d2d7dc 80%,#c9cfd5 100%);
+    border-radius:16px;
     padding:clamp(1.75rem,4vw,2.5rem);margin-top:clamp(2.5rem,6vw,3.5rem);
   }
 
@@ -179,13 +196,23 @@
   .c2{grid-column:3;grid-row:1;}
   .c3{grid-column:5;grid-row:1;}
 
+  /* Cartes : le dégradé du CRM étalé de haut en bas. Acquisition et
+     Conversion partagent la même rampe ; Premium est la plus claire des
+     trois, pour se distinguer par le haut. Encre blanche sur fonds clairs :
+     de 1,67 à 2,96 sur les deux premières, de 1,31 à 2,17 sur la Premium.
+     C'est sous le seuil AA — choix assumé du client, pas un oubli. */
   .carte{
-    background:var(--card-alt);border:1px solid var(--rule);border-radius:14px;
+    background:linear-gradient(0deg,#bac1c7 0%,#b0b7be 30%,#a1a9b0 58%,#939ba3 80%,#868e96 100%);
+    border:1px solid var(--rule);border-radius:14px;
     padding:1.75rem 1.6rem 2rem;display:flex;flex-direction:column;position:relative;
-    height:100%;
+    height:100%;color:#fff;
   }
 
-  .carte.option{background:#fff;border-style:dashed;}
+  /* Premium : même dégradé, la plus claire des trois. */
+  .carte.option{
+    background:linear-gradient(180deg,#c3c9cf 0%,#b9c0c6 30%,#aab1b8 58%,#9ca4ab 80%,#8f979f 100%);
+    border-style:dashed;
+  }
 
   /* Emplacement réservé dans les trois cartes, pour que la pastille
      ne décale pas le contenu de celle qui la porte. */
@@ -202,25 +229,27 @@
     line-height:1.25;margin:0 0 .6rem;min-height:2.5em;
   }
 
-  .carte-desc{color:var(--ink-soft);font-size:.9375rem;margin:0 0 1.5rem;min-height:6.4em;}
+  .carte-desc{color:#fff;font-size:.9375rem;margin:0 0 1.5rem;min-height:6.4em;}
 
   .prix{
     font-size:clamp(2.4rem,5.5vw,3rem);font-weight:800;letter-spacing:-.045em;
     line-height:1;font-variant-numeric:tabular-nums;margin:0;
   }
 
+  /* Ces quatre mentions descendent la carte jusqu'à son arrêt le plus sombre :
+     --ink-faint y tomberait à 3,50 · --ink-soft tient à 4,66. */
   .prix .des{
     font-size:.9375rem;font-weight:600;letter-spacing:-.01em;
-    color:var(--ink-faint);display:block;margin-bottom:.35rem;min-height:1.5em;
+    color:#fff;display:block;margin-bottom:.35rem;min-height:1.5em;
   }
 
-  .prix .mois{font-size:.9375rem;font-weight:600;letter-spacing:0;color:var(--ink-faint);}
+  .prix .mois{font-size:.9375rem;font-weight:600;letter-spacing:0;color:#fff;}
 
-  .ttc{font-size:.8125rem;color:var(--ink-faint);margin:.5rem 0 0;}
+  .ttc{font-size:.8125rem;color:#fff;margin:.5rem 0 0;}
 
   .obtenez{
     font-size:.625rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;
-    color:var(--ink-faint);margin:1.75rem 0 .9rem;padding-top:1.5rem;border-top:1px solid var(--rule);
+    color:#fff;margin:1.75rem 0 .9rem;padding-top:1.5rem;border-top:1px solid var(--rule);
   }
 
   .liste{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.7rem;}
@@ -230,38 +259,9 @@
     font-size:.9375rem;line-height:1.45;align-items:start;
   }
 
-  .liste svg{width:1.1rem;height:1.1rem;margin-top:.15rem;flex:none;color:var(--accent);}
+  .liste svg{width:1.1rem;height:1.1rem;margin-top:.15rem;flex:none;color:#fff;}
 
   /* ---------- tableau tarifaire ---------- */
-
-  /* Bascule sans JavaScript : deux boutons radio masqués pilotent
-     l'onglet actif et le tableau affiché. Fonctionne partout, y compris
-     dans les aperçus de fichiers qui n'exécutent pas de script. */
-  .radio-onglet{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
-
-  .bascule{display:flex;gap:1.75rem;margin:2rem 0 0;flex-wrap:wrap;}
-
-  .bascule label{
-    font-size:.9375rem;font-weight:600;color:var(--ink-faint);
-    border-bottom:2px solid transparent;padding:0 0 .5rem;cursor:pointer;
-    transition:color .18s,border-color .18s;
-  }
-
-  .bascule label:hover{color:var(--ink-soft);}
-
-  #r-une:checked ~ .bascule label[for="r-une"],
-  #r-illimite:checked ~ .bascule label[for="r-illimite"]{
-    color:var(--ink);border-bottom-color:var(--accent);
-  }
-
-  #r-une:focus-visible ~ .bascule label[for="r-une"],
-  #r-illimite:focus-visible ~ .bascule label[for="r-illimite"]{
-    outline:2px solid var(--accent-ink);outline-offset:3px;
-  }
-
-  .panneau-tarifs{display:none;}
-  #r-une:checked ~ #p-une,
-  #r-illimite:checked ~ #p-illimite{display:block;}
 
   .tableau-carte{
     margin-top:1.5rem;background:#fff;border:1px solid var(--rule-strong);
@@ -353,7 +353,7 @@
   .pied h2{margin-left:auto;margin-right:auto;}
   .pied .lede{margin:0 auto 2rem;}
   .pied .tel{font-size:1.0625rem;padding:.85rem 1.75rem;}
-  .signature{margin:3rem 0 0;font-size:.8125rem;color:var(--ink-faint);}
+  .signature{margin:3rem 0 0;font-size:.8125rem;color:var(--ink-soft);}
 
   [hidden]{display:none !important;}
 
@@ -379,6 +379,8 @@
 
 </head>
 <body>
+<div class="filet-marque" aria-hidden="true"></div>
+
 <header class="bande entete-bande">
   <div class="wrap entete">
     <span class="marque">OQORA</span>
@@ -445,14 +447,15 @@
         <span class="chip-slot"></span>
         <h3>Acquisition</h3>
         <p class="carte-desc">On crée vos publicités et on vous amène des prospects qualifiés. Vous gérez les appels vous-même.</p>
-        <p class="prix"><span class="des">&nbsp;</span>450 &euro; <span class="mois">/ mois</span></p>
-        <p class="ttc">540 &euro; TTC</p>
+          <p class="prix"><span class="des">1 campagne</span>450 &euro; <span class="mois">/ mois</span></p>
+          <p class="ttc">540 &euro; TTC</p>
         <p class="obtenez">Ce que vous obtenez</p>
         <ul class="liste">
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Création et gestion de vos publicités Meta</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Ciblage des personnes intéressées par vos soins</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Prospects centralisés dans votre CRM</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Reporting mensuel</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Campagnes illimit&eacute;es : 500 &euro; HT par mois, soit 600 &euro; TTC</span></li>
         </ul>
       </div>
 
@@ -460,8 +463,8 @@
           <span class="chip-slot"></span>
           <h3>Acquisition + Conversion</h3>
           <p class="carte-desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda. Vous n'avez rien à faire.</p>
-          <p class="prix"><span class="des">à partir de</span>700 &euro; <span class="mois">/ mois</span></p>
-          <p class="ttc">840 &euro; TTC</p>
+            <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+            <p class="ttc">600 &euro; TTC &middot; plus 15 &agrave; 30 &euro; HT par rendez-vous honor&eacute;</p>
           <p class="obtenez">Ce que vous obtenez</p>
           <ul class="liste">
             <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Tout l'Acquisition inclus</span></li>
@@ -475,8 +478,8 @@
           <span class="chip-slot"><span class="chip">Option</span></span>
           <h3>Conversion Premium</h3>
           <p class="carte-desc">L'IA contacte vos prospects en quelques secondes. Un humain prend le relais. Aucun rendez-vous n'est perdu.</p>
-          <p class="prix"><span class="des">à partir de</span>799 &euro; <span class="mois">/ mois</span></p>
-          <p class="ttc">958,80 &euro; TTC</p>
+            <p class="prix"><span class="des">base fixe</span>600 &euro; <span class="mois">/ mois</span></p>
+            <p class="ttc">720 &euro; TTC &middot; plus 15 &agrave; 30 &euro; HT par rendez-vous honor&eacute;</p>
           <p class="obtenez">Ce que vous obtenez en plus</p>
           <ul class="liste">
             <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Contact IA ultra-rapide dès la réception du prospect</span></li>
@@ -494,101 +497,49 @@
   </div>
 </section>
 
-<!-- ================= 4 · grille tarifaire ================= -->
+<!-- ================= 4 · le variable ================= -->
 <section class="bande teinte">
   <div class="wrap">
-    <p class="eyebrow">Grille tarifaire</p>
-    <h2>Votre tarif exact, selon votre volume.</h2>
+    <p class="eyebrow">Le variable</p>
+    <h2>Vous ne payez que les personnes venues.</h2>
     <p class="lede">
-      Votre volume de prospects change d'un mois à l'autre.
-      Voici exactement ce que vous payez dans chaque cas.
+      Chaque rendez-vous honor&eacute; vous co&ucirc;te la moiti&eacute; du prix de votre s&eacute;ance d&eacute;couverte,
+      jamais moins de 15&nbsp;&euro; ni plus de 30&nbsp;&euro;. Ni les prospects, ni les rendez-vous pos&eacute;s :
+      les personnes assises dans votre institut.
     </p>
 
-    <input class="radio-onglet" type="radio" name="campagnes" id="r-une" checked>
-    <input class="radio-onglet" type="radio" name="campagnes" id="r-illimite">
-
-    <div class="bascule">
-      <label for="r-une">Une campagne</label>
-      <label for="r-illimite">Campagnes illimitées</label>
-    </div>
-
-    <div class="panneau-tarifs" id="p-une">
-      <div class="tableau-carte">
-        <div class="tableau-defile">
-          <table class="tableau">
-            <thead>
-              <tr>
-                <th scope="col">Prospects par mois</th>
-                <th scope="col">Acquisition</th>
-                <th scope="col">Acquisition + Conversion</th>
-                <th scope="col">Avec Premium</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="palier">Moins de 80</td>
-                <td><span class="montant">450 &euro;</span><span class="ttc-min">540 &euro; TTC</span></td>
-                <td><span class="montant">700 &euro;</span><span class="ttc-min">840 &euro; TTC</span></td>
-                <td><span class="montant">799 &euro;</span><span class="ttc-min">958,80 &euro; TTC</span></td>
-              </tr>
-              <tr class="vedette">
-                <td class="palier">80 &agrave; 149</td>
-                <td><span class="montant">450 &euro;</span><span class="ttc-min">540 &euro; TTC</span></td>
-                <td><span class="montant">800 &euro;</span><span class="ttc-min">960 &euro; TTC</span></td>
-                <td><span class="montant">899 &euro;</span><span class="ttc-min">1 078,80 &euro; TTC</span></td>
-              </tr>
-              <tr>
-                <td class="palier">150 et plus</td>
-                <td><span class="montant">450 &euro;</span><span class="ttc-min">540 &euro; TTC</span></td>
-                <td><span class="montant">900 &euro;</span><span class="ttc-min">1 080 &euro; TTC</span></td>
-                <td><span class="montant">999 &euro;</span><span class="ttc-min">1 198,80 &euro; TTC</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <div class="panneau-tarifs" id="p-illimite">
-      <div class="tableau-carte">
-        <div class="tableau-defile">
-          <table class="tableau">
-            <thead>
-              <tr>
-                <th scope="col">Prospects par mois</th>
-                <th scope="col">Acquisition</th>
-                <th scope="col">Acquisition + Conversion</th>
-                <th scope="col">Avec Premium</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="palier">Moins de 80</td>
-                <td><span class="montant">500 &euro;</span><span class="ttc-min">600 &euro; TTC</span></td>
-                <td><span class="montant">750 &euro;</span><span class="ttc-min">900 &euro; TTC</span></td>
-                <td><span class="montant">849 &euro;</span><span class="ttc-min">1 018,80 &euro; TTC</span></td>
-              </tr>
-              <tr class="vedette">
-                <td class="palier">80 &agrave; 149</td>
-                <td><span class="montant">500 &euro;</span><span class="ttc-min">600 &euro; TTC</span></td>
-                <td><span class="montant">850 &euro;</span><span class="ttc-min">1 020 &euro; TTC</span></td>
-                <td><span class="montant">949 &euro;</span><span class="ttc-min">1 138,80 &euro; TTC</span></td>
-              </tr>
-              <tr>
-                <td class="palier">150 et plus</td>
-                <td><span class="montant">500 &euro;</span><span class="ttc-min">600 &euro; TTC</span></td>
-                <td><span class="montant">950 &euro;</span><span class="ttc-min">1 140 &euro; TTC</span></td>
-                <td><span class="montant">1 049 &euro;</span><span class="ttc-min">1 258,80 &euro; TTC</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    <div class="tableau-carte">
+      <div class="tableau-defile">
+        <table class="tableau">
+          <thead>
+            <tr>
+              <th scope="col">Votre s&eacute;ance d&eacute;couverte</th>
+              <th scope="col">Vous payez par personne venue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="palier">29 &agrave; 30 &euro;<span class="marqueur">Plancher</span></td>
+              <td><span class="montant">15 &euro;</span><span class="ttc-min">18 &euro; TTC</span></td>
+            </tr>
+            <tr>
+              <td class="palier">50 &euro;</td>
+              <td><span class="montant">25 &euro;</span><span class="ttc-min">30 &euro; TTC</span></td>
+            </tr>
+            <tr>
+              <td class="palier">60 &euro; et plus<span class="marqueur">Plafond</span></td>
+              <td><span class="montant">30 &euro;</span><span class="ttc-min">36 &euro; TTC</span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
     <div class="info">
-      <p><strong>Quand vous payez.</strong> L'acquisition en début de mois. La conversion en fin de mois, une fois qu'on sait combien de prospects vous avez reçus.</p>
-      <p><strong>Le budget publicitaire.</strong> Vous le versez directement à Meta, il n'est pas compris dans nos tarifs. Plus il est élevé, plus vous recevez de prospects. Un budget stable donne de meilleures performances.</p>
+      <p><strong>Une personne, un seul rendez-vous factur&eacute;.</strong> M&ecirc;me si son rendez-vous est d&eacute;plac&eacute;, annul&eacute;, puis reprogramm&eacute;, vous ne le payez qu'une fois.</p>
+      <p><strong>C'est vous qui confirmez les venues.</strong> Chaque rendez-vous honor&eacute; est attest&eacute; par vous, dans un court questionnaire. Un rendez-vous rest&eacute; sans r&eacute;ponse apr&egrave;s nos relances est compt&eacute; comme honor&eacute;.</p>
+      <p><strong>Le chiffre d'affaires de vos cures est &agrave; vous.</strong> Ce que vos clientes ach&egrave;tent apr&egrave;s leur s&eacute;ance d&eacute;couverte ne nous revient jamais. On facture le rendez-vous, pas ce que vous en faites.</p>
+      <p><strong>Le budget publicitaire.</strong> Vous le versez directement &agrave; Meta, il n'est pas compris dans nos tarifs. Minimum 10 &euro; par jour, 20 &euro; recommand&eacute;s. Un budget stable donne de meilleures performances.</p>
     </div>
   </div>
 </section>
@@ -602,25 +553,29 @@
     <div class="garantie">
       <div class="g-ligne">
         <span class="g-offre"><strong>Offre Acquisition</strong>On génère vos prospects</span>
-        <span class="g-chiffre">35+</span>
-        <span class="g-unite">prospects<br>garantis / mois</span>
+        <span class="g-chiffre">35</span>
+        <span class="g-unite">prospects garantis / mois<br>&agrave; 20 &euro; de budget par jour</span>
       </div>
       <div class="g-ligne">
-        <span class="g-offre"><strong>Offre Acquisition + Conversion</strong>On cale vos rendez-vous</span>
-        <span class="g-chiffre">10+</span>
-        <span class="g-unite">rendez-vous<br>garantis / mois</span>
+        <span class="g-offre"><strong>Offres Conversion et Premium</strong>On cale vos rendez-vous</span>
+        <span class="g-chiffre">8</span>
+        <span class="g-unite">rendez-vous honorés<br>garantis / mois</span>
       </div>
       <div class="g-ligne">
         <span class="g-offre"><strong>Si l'objectif n'est pas atteint</strong></span>
         <span class="g-chiffre accent">&divide;2</span>
-        <span class="g-unite">sur votre<br>facture ce mois-là</span>
+        <span class="g-unite">sur votre base<br>ce mois-là</span>
       </div>
     </div>
 
     <p class="g-note">
-      Mesuré via votre CRM, doublons et faux contacts exclus &middot;
-      Applicable à partir de 20 &euro; / jour de budget publicitaire &middot;
-      Au-delà, les objectifs garantis augmentent
+      Prospects garantis selon votre budget publicitaire :
+      35 &agrave; 20 &euro; par jour &middot; 52 &agrave; 30 &euro; &middot; 70 &agrave; 40 &euro; &middot; 87 &agrave; 50 &euro;
+    </p>
+    <p class="g-note">
+      Mesuré dans votre CRM, doublons et faux contacts exclus, sur le ciblage défini avec vous au lancement &middot;
+      Aucune garantie en dessous de 20 &euro; / jour &middot;
+      Un budget baissé en cours de mois réduit la garantie dans la même proportion
     </p>
   </div>
 </section>
