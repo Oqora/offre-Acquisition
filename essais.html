@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Planche d'essais — Oqora</title>
+<style>
+  :root{
+    --ground:#FFFFFF; --band:#f7f8f9; --ink:#22262b; --ink-soft:#50575e;
+    --ink-faint:#626a72; --rule:#dde1e5; --rule-strong:#c4cad0;
+    --accent:#40464c; --accent-ink:#33383d; --accent-wash:#eff1f3;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{background:var(--ground);color:var(--ink);font-family:var(--sans);
+       font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;margin:0;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem);}
+  .tete{padding:3rem 0 1rem;}
+  h1{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin:0 0 .75rem;}
+  .lede{font-size:1.0625rem;color:var(--ink-soft);max-width:60ch;margin:0 0 .5rem;}
+  .mode{font-size:.9375rem;color:var(--ink-faint);max-width:60ch;margin:0;}
+  h2{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:3.5rem 0 .4rem;}
+  .h2note{font-size:.9375rem;color:var(--ink-soft);margin:0 0 1.75rem;max-width:68ch;}
+  .grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;}
+  .essai{border:1px solid var(--rule);border-radius:14px;overflow:hidden;background:#fff;}
+  .etiquette{display:flex;align-items:baseline;gap:.6rem;padding:.7rem 1rem;
+             border-bottom:1px solid var(--rule);background:#fff;}
+  .code{font-size:.8125rem;font-weight:800;letter-spacing:.08em;color:#fff;background:var(--accent);
+        border-radius:6px;padding:.15rem .5rem;font-variant-numeric:tabular-nums;}
+  .nom{font-size:.8125rem;color:var(--ink-soft);}
+  .carte{padding:1.6rem 1.5rem 1.8rem;background:var(--band);}
+  .titre{margin:0 0 .55rem;}
+  .desc{color:var(--ink-soft);font-size:.9375rem;margin:0 0 1.3rem;}
+  .des{display:block;font-size:.9375rem;font-weight:600;color:var(--ink-soft);margin-bottom:.3rem;}
+  .prix{margin:0;line-height:1;font-variant-numeric:tabular-nums;}
+  .mois{font-size:1rem;}
+  .ttc{font-size:.8125rem;color:var(--ink-soft);margin:.5rem 0 0;}
+  .obtenez{font-size:.625rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;
+           color:var(--ink-soft);margin:1.5rem 0 .8rem;padding-top:1.3rem;border-top:1px solid var(--rule-strong);}
+  .liste{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.6rem;}
+  .liste li{display:grid;grid-template-columns:1.1rem 1fr;gap:.65rem;font-size:.9375rem;line-height:1.45;align-items:start;}
+  .liste svg{width:1.1rem;height:1.1rem;margin-top:.15rem;flex:none;color:var(--accent-ink);}
+
+  /* ---------- Partie A : la typographie ---------- */
+  /* Le fond est identique partout : ne regardez que les lettres. */
+  .a1 .titre{font-family:var(--sans);font-size:1.375rem;font-weight:800;letter-spacing:-.02em;}
+  .a1 .prix{font-family:var(--sans);font-size:2.9rem;font-weight:800;letter-spacing:-.045em;}
+  .a1 .mois{font-weight:600;}
+
+  .a2 .titre{font-family:Optima,var(--sans);font-size:1.5rem;font-weight:700;letter-spacing:.005em;}
+  .a2 .prix{font-family:Optima,var(--sans);font-size:3rem;font-weight:400;letter-spacing:0;}
+  .a2 .mois{font-weight:400;}
+
+  .a3 .titre{font-family:Futura,var(--sans);font-size:1.35rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;}
+  .a3 .prix{font-family:Futura,var(--sans);font-size:2.9rem;font-weight:500;letter-spacing:.01em;}
+  .a3 .mois{font-weight:500;}
+
+  .a4 .titre{font-family:"Avenir Next",var(--sans);font-size:1.4rem;font-weight:600;letter-spacing:.01em;}
+  .a4 .prix{font-family:"Avenir Next",var(--sans);font-size:3rem;font-weight:400;letter-spacing:-.01em;}
+  .a4 .mois{font-weight:400;}
+
+  .a5 .titre{font-family:"Bodoni 72",Didot,serif;font-size:1.55rem;font-weight:400;letter-spacing:.005em;}
+  .a5 .prix{font-family:"Bodoni 72",Didot,serif;font-size:3.1rem;font-weight:400;letter-spacing:0;}
+  .a5 .mois{font-weight:400;}
+
+  .a6 .titre{font-family:"Hoefler Text",serif;font-size:1.5rem;font-weight:400;letter-spacing:0;}
+  .a6 .prix{font-family:"Hoefler Text",serif;font-size:3rem;font-weight:400;letter-spacing:0;}
+  .a6 .mois{font-weight:400;}
+
+  .a7 .titre{font-family:"Iowan Old Style",serif;font-size:1.45rem;font-weight:700;letter-spacing:0;}
+  .a7 .prix{font-family:"Iowan Old Style",serif;font-size:2.9rem;font-weight:400;letter-spacing:0;}
+  .a7 .mois{font-weight:400;}
+
+  .a8 .titre{font-family:Seravek,var(--sans);font-size:1.45rem;font-weight:700;letter-spacing:0;}
+  .a8 .prix{font-family:Seravek,var(--sans);font-size:3rem;font-weight:300;letter-spacing:-.01em;}
+  .a8 .mois{font-weight:400;}
+
+  .a9 .titre{font-family:Baskerville,serif;font-size:1.625rem;font-weight:600;letter-spacing:0;}
+  .a9 .prix{font-family:Baskerville,serif;font-size:2.9rem;font-weight:600;letter-spacing:0;}
+  .a9 .mois{font-weight:600;}
+
+  .a10 .titre{font-family:Copperplate,var(--sans);font-size:1.15rem;font-weight:700;letter-spacing:.1em;}
+  .a10 .prix{font-family:var(--sans);font-size:2.9rem;font-weight:300;letter-spacing:-.04em;}
+  .a10 .mois{font-weight:400;}
+
+  .a11 .titre{font-family:"Avenir Next",var(--sans);font-size:1.1rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;}
+  .a11 .prix{font-family:"Avenir Next",var(--sans);font-size:3.2rem;font-weight:200;letter-spacing:-.02em;}
+  .a11 .mois{font-weight:400;}
+
+  .a12 .titre{font-family:GillSans,var(--sans);font-size:1.4rem;font-weight:600;letter-spacing:.01em;}
+  .a12 .prix{font-family:GillSans,var(--sans);font-size:3rem;font-weight:300;letter-spacing:0;}
+  .a12 .mois{font-weight:400;}
+
+  /* ---------- Partie B : le fond ---------- */
+  /* La typographie est identique partout : ne regardez que le fond. */
+  .b .titre{font-family:var(--sans);font-size:1.375rem;font-weight:800;letter-spacing:-.02em;}
+  .b .prix{font-family:var(--sans);font-size:2.9rem;font-weight:800;letter-spacing:-.045em;}
+  .b .mois{font-weight:600;}
+
+  .b1 .carte{background:#fff;}
+  .b2 .carte{background:#f7f8f9;}
+  .b3 .carte{background:#eff1f3;}
+  .b4 .carte{background:linear-gradient(180deg,#f7f8f9 0%,#eaeef1 100%);}
+  .b5 .carte{background:linear-gradient(180deg,#f7f8f9 0%,#dde1e5 100%);}
+  .b6 .carte{background:linear-gradient(0deg,#f7f8f9 0%,#e8ecef 30%,#d2d8dd 58%,#b0b8bf 80%,#8f979f 100%);}
+
+  .pied{margin:4rem 0 5rem;padding-top:2rem;border-top:1px solid var(--rule);
+        font-size:.9375rem;color:var(--ink-soft);max-width:70ch;}
+  .pied strong{color:var(--ink);}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="tete">
+    <h1>Planche d'essais</h1>
+    <p class="lede">
+      La même carte, répétée. Chaque case porte un code.
+      Dites-moi un code de la partie A et un code de la partie B, et je les applique à la vraie page.
+    </p>
+    <p class="mode">
+      À ouvrir sur votre Mac : ces polices sont installées sur macOS, pas ailleurs.
+    </p>
+  </div>
+
+  <h2>Partie A — la typographie</h2>
+  <p class="h2note">
+    Le fond est rigoureusement identique dans les douze cases. Ne regardez que les lettres :
+    le titre de la formule et le prix.
+  </p>
+
+  <div class="grille">
+
+    <div class="essai a1">
+      <div class="etiquette"><span class="code">A1</span><span class="nom">Système, graisse 800 — l'original de la page</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC &middot; plus 15 &agrave; 30 &euro; HT par rendez-vous honoré</p>
+        <p class="obtenez">Ce que vous obtenez</p>
+        <ul class="liste">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Nos équipes appellent vos prospects</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Rendez-vous calés dans votre agenda</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="essai a2">
+      <div class="etiquette"><span class="code">A2</span><span class="nom">Optima — la police des cosmétiques de luxe</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC &middot; plus 15 &agrave; 30 &euro; HT par rendez-vous honoré</p>
+        <p class="obtenez">Ce que vous obtenez</p>
+        <ul class="liste">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Nos équipes appellent vos prospects</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Rendez-vous calés dans votre agenda</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="essai a3">
+      <div class="etiquette"><span class="code">A3</span><span class="nom">Futura — géométrique, comme votre logo</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC &middot; plus 15 &agrave; 30 &euro; HT par rendez-vous honoré</p>
+        <p class="obtenez">Ce que vous obtenez</p>
+        <ul class="liste">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Nos équipes appellent vos prospects</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Rendez-vous calés dans votre agenda</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="essai a4">
+      <div class="etiquette"><span class="code">A4</span><span class="nom">Avenir Next — géométrique humaniste</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC &middot; plus 15 &agrave; 30 &euro; HT par rendez-vous honoré</p>
+        <p class="obtenez">Ce que vous obtenez</p>
+        <ul class="liste">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Nos équipes appellent vos prospects</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Rendez-vous calés dans votre agenda</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="essai a5">
+      <div class="etiquette"><span class="code">A5</span><span class="nom">Bodoni 72 — la serif de la mode</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC &middot; plus 15 &agrave; 30 &euro; HT par rendez-vous honoré</p>
+        <p class="obtenez">Ce que vous obtenez</p>
+        <ul class="liste">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Nos équipes appellent vos prospects</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Rendez-vous calés dans votre agenda</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="essai a6">
+      <div class="etiquette"><span class="code">A6</span><span class="nom">Hoefler Text — serif éditoriale</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC &middot; plus 15 &agrave; 30 &euro; HT par rendez-vous honoré</p>
+        <p class="obtenez">Ce que vous obtenez</p>
+        <ul class="liste">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Nos équipes appellent vos prospects</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Rendez-vous calés dans votre agenda</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="essai a7">
+      <div class="etiquette"><span class="code">A7</span><span class="nom">Iowan Old Style — serif chaleureuse</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC &middot; plus 15 &agrave; 30 &euro; HT par rendez-vous honoré</p>
+        <p class="obtenez">Ce que vous obtenez</p>
+        <ul class="liste">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Nos équipes appellent vos prospects</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Rendez-vous calés dans votre agenda</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="essai a8">
+      <div class="etiquette"><span class="code">A8</span><span class="nom">Seravek — sans humaniste, prix en maigre</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC &middot; plus 15 &agrave; 30 &euro; HT par rendez-vous honoré</p>
+        <p class="obtenez">Ce que vous obtenez</p>
+        <ul class="liste">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Nos équipes appellent vos prospects</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Rendez-vous calés dans votre agenda</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="essai a9">
+      <div class="etiquette"><span class="code">A9</span><span class="nom">Baskerville — celle en ligne aujourd'hui</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC &middot; plus 15 &agrave; 30 &euro; HT par rendez-vous honoré</p>
+        <p class="obtenez">Ce que vous obtenez</p>
+        <ul class="liste">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Nos équipes appellent vos prospects</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Rendez-vous calés dans votre agenda</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="essai a10">
+      <div class="etiquette"><span class="code">A10</span><span class="nom">Copperplate en titre + sans maigre au prix</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC &middot; plus 15 &agrave; 30 &euro; HT par rendez-vous honoré</p>
+        <p class="obtenez">Ce que vous obtenez</p>
+        <ul class="liste">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Nos équipes appellent vos prospects</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Rendez-vous calés dans votre agenda</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="essai a11">
+      <div class="etiquette"><span class="code">A11</span><span class="nom">Titre en capitales espacées + prix très maigre</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC &middot; plus 15 &agrave; 30 &euro; HT par rendez-vous honoré</p>
+        <p class="obtenez">Ce que vous obtenez</p>
+        <ul class="liste">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Nos équipes appellent vos prospects</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Rendez-vous calés dans votre agenda</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="essai a12">
+      <div class="etiquette"><span class="code">A12</span><span class="nom">Gill Sans — sans classique anglaise</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC &middot; plus 15 &agrave; 30 &euro; HT par rendez-vous honoré</p>
+        <p class="obtenez">Ce que vous obtenez</p>
+        <ul class="liste">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Nos équipes appellent vos prospects</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Rendez-vous calés dans votre agenda</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <h2>Partie B — le fond de la carte</h2>
+  <p class="h2note">
+    La typographie est rigoureusement identique dans les six cases, et c'est celle de l'origine.
+    Ne regardez que le fond : de l'aplat blanc au dégradé actuellement en ligne.
+  </p>
+
+  <div class="grille">
+
+    <div class="essai b b1">
+      <div class="etiquette"><span class="code">B1</span><span class="nom">Blanc, contour seul</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC</p>
+      </div>
+    </div>
+
+    <div class="essai b b2">
+      <div class="etiquette"><span class="code">B2</span><span class="nom">Platine plat très clair — l'original de la charte</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC</p>
+      </div>
+    </div>
+
+    <div class="essai b b3">
+      <div class="etiquette"><span class="code">B3</span><span class="nom">Platine plat, un cran plus soutenu</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC</p>
+      </div>
+    </div>
+
+    <div class="essai b b4">
+      <div class="etiquette"><span class="code">B4</span><span class="nom">Dégradé à peine perceptible</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC</p>
+      </div>
+    </div>
+
+    <div class="essai b b5">
+      <div class="etiquette"><span class="code">B5</span><span class="nom">Dégradé doux</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC</p>
+      </div>
+    </div>
+
+    <div class="essai b b6">
+      <div class="etiquette"><span class="code">B6</span><span class="nom">Le dégradé actuellement en ligne</span></div>
+      <div class="carte">
+        <h3 class="titre">Acquisition + Conversion</h3>
+        <p class="desc">On gère tout, des publicités jusqu'aux rendez-vous dans votre agenda.</p>
+        <p class="prix"><span class="des">base fixe</span>500 &euro; <span class="mois">/ mois</span></p>
+        <p class="ttc">600 &euro; TTC</p>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="pied">
+    <strong>Comment répondre :</strong> un code de la partie A, un code de la partie B.
+    Par exemple « A2 et B2 ». Si aucun ne vous convient, dites-moi lequel s'en approche le plus
+    et ce qui cloche — c'est plus rapide que de repartir de zéro.
+    <br><br>
+    Cette page est un brouillon de travail. Elle ne remplace pas la vraie page,
+    qui reste à l'adresse habituelle.
+  </p>
+
+</div>
+</body>
+</html>
