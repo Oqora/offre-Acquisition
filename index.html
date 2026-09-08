@@ -27,6 +27,7 @@
     --accent-light:#8d959d;
 
     --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --serif:Baskerville,"Hoefler Text",Cochin,Georgia,serif;
   }
 
   *{box-sizing:border-box;}
@@ -226,13 +227,11 @@
     border-radius:999px;padding:.28rem .7rem;
   }
 
-  /* Titre de formule : seule encre blanche de la carte. Il se pose tout en
-     haut, donc côté foncé sur Acquisition et Conversion (2,41 sur le fond réel
-     #a0a8af) et côté clair sur la Premium qui tourne à contresens (1,98 sur
-     #b2b9c0) — c'est là qu'il est le plus faible. */
+  /* Titre de formule : en serif, plus grand que le prix, en encre foncée. */
   .carte h3{
-    font-size:1.375rem;font-weight:800;letter-spacing:-.02em;
-    line-height:1.25;margin:0 0 .6rem;min-height:2.5em;color:#fff;
+    font-family:var(--serif);
+    font-size:1.625rem;font-weight:600;letter-spacing:0;
+    line-height:1.2;margin:0 0 .6rem;min-height:2.4em;color:var(--ink);
   }
 
   .carte-desc{color:var(--ink);font-size:.9375rem;margin:0 0 1.5rem;min-height:6.4em;}
@@ -240,11 +239,12 @@
   /* Tout le corps de la carte est en --ink #22262b — seule encre foncée qui
      tienne le seuil sur les deux dégradés (5,14 au point le plus sombre,
      #8f979f). Le titre est la seule exception, en blanc. */
-  /* Le prix en Didot : haute variation de graisse, hairlines très fines.
-     Pile de secours entièrement système, aucune webfont, aucune requête. */
+  /* Le prix en Baskerville : serif de transition, contraste modéré — plus
+     sobre que Didot, dont les déliés étaient trop fins. Graisse 600, une vraie
+     SemiBold sur macOS. Plus petit que le titre, qui reste l'élément dominant. */
   .prix{
-    font-family:Didot,"Hoefler Text","Big Caslon",Cochin,Baskerville,Georgia,serif;
-    font-size:clamp(2.9rem,6.6vw,3.7rem);font-weight:400;letter-spacing:0;
+    font-family:var(--serif);
+    font-size:clamp(2.3rem,5.2vw,2.9rem);font-weight:600;letter-spacing:0;
     line-height:1;font-variant-numeric:tabular-nums;margin:0;color:var(--ink);
   }
 
@@ -256,7 +256,7 @@
     color:var(--ink);display:block;margin-bottom:.35rem;min-height:1.5em;
   }
 
-  .prix .mois{font-size:1.0625rem;font-weight:400;letter-spacing:0;color:var(--ink);}
+  .prix .mois{font-size:1rem;font-weight:600;letter-spacing:0;color:var(--ink);}
 
   .ttc{font-size:.8125rem;color:var(--ink);margin:.5rem 0 0;}
 
@@ -272,7 +272,7 @@
     font-size:.9375rem;line-height:1.45;align-items:start;
   }
 
-  .liste svg{width:1.1rem;height:1.1rem;margin-top:.15rem;flex:none;color:var(--accent-ink);}
+  .liste svg{width:1.1rem;height:1.1rem;margin-top:.15rem;flex:none;color:#fff;}
 
   /* ---------- tableau tarifaire ---------- */
 
