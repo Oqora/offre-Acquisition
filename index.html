@@ -224,22 +224,23 @@
     border-radius:999px;padding:.28rem .7rem;
   }
 
-  /* Titre de formule en blanc. Il se pose tout en haut de la carte : côté
-     foncé sur Acquisition et Conversion (2,96), côté clair sur la Premium
-     qui tourne à contresens (2,17) — c'est là qu'il est le plus faible. */
+  /* Titre de formule : seule encre blanche de la carte. Il se pose tout en
+     haut, donc côté foncé sur Acquisition et Conversion (2,41 sur le fond réel
+     #a0a8af) et côté clair sur la Premium qui tourne à contresens (1,98 sur
+     #b2b9c0) — c'est là qu'il est le plus faible. */
   .carte h3{
-    font-size:1.25rem;font-weight:800;letter-spacing:-.02em;
+    font-size:1.375rem;font-weight:800;letter-spacing:-.02em;
     line-height:1.25;margin:0 0 .6rem;min-height:2.5em;color:#fff;
   }
 
   .carte-desc{color:var(--ink);font-size:.9375rem;margin:0 0 1.5rem;min-height:6.4em;}
 
-  /* Le prix est la seule encre blanche de la carte : le chiffre et son unité.
-     Tout le reste est en --ink #22262b, seule encre foncée qui tienne le seuil
-     sur les deux dégradés (4,58 au point le plus sombre, #868e96). */
+  /* Tout le corps de la carte est en --ink #22262b — seule encre foncée qui
+     tienne le seuil sur les deux dégradés (5,14 au point le plus sombre,
+     #8f979f). Le titre est la seule exception, en blanc. */
   .prix{
     font-size:clamp(2.4rem,5.5vw,3rem);font-weight:800;letter-spacing:-.045em;
-    line-height:1;font-variant-numeric:tabular-nums;margin:0;color:#fff;
+    line-height:1;font-variant-numeric:tabular-nums;margin:0;color:var(--ink);
   }
 
   /* Ces quatre mentions descendent la carte jusqu'à son arrêt le plus sombre :
@@ -249,7 +250,7 @@
     color:var(--ink);display:block;margin-bottom:.35rem;min-height:1.5em;
   }
 
-  .prix .mois{font-size:.9375rem;font-weight:600;letter-spacing:0;color:#fff;}
+  .prix .mois{font-size:.9375rem;font-weight:600;letter-spacing:0;color:var(--ink);}
 
   .ttc{font-size:.8125rem;color:var(--ink);margin:.5rem 0 0;}
 
