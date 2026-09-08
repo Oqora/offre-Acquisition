@@ -199,10 +199,11 @@
   .c2{grid-column:3;grid-row:1;}
   .c3{grid-column:5;grid-row:1;}
 
-  /* Cartes — traitement B5 de la planche d'essais : dégradé doux, vertical,
-     du platine très clair au platine clair. Deux arrêts seulement. */
+  /* Cartes — traitement C5 de la planche d'essais : rayon partant du coin
+     haut-droit, du blanc vers le platine clair. L'arrêt le plus sombre est
+     #dde1e5, où le texte gris tient encore 5,57. */
   .carte{
-    background:linear-gradient(180deg,#f7f8f9 0%,#dde1e5 100%);
+    background:radial-gradient(125% 125% at 100% 0%,#ffffff 0%,#dde1e5 100%);
     border:1px solid var(--rule);border-radius:14px;
     padding:1.75rem 1.6rem 2rem;display:flex;flex-direction:column;position:relative;
     height:100%;color:var(--ink);
