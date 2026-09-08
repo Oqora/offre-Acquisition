@@ -202,7 +202,7 @@
      de 1,67 à 2,96 sur les deux premières, de 1,31 à 2,17 sur la Premium.
      C'est sous le seuil AA — choix assumé du client, pas un oubli. */
   .carte{
-    background:linear-gradient(0deg,#bac1c7 0%,#b0b7be 30%,#a1a9b0 58%,#939ba3 80%,#868e96 100%);
+    background:linear-gradient(0deg,#f7f8f9 0%,#e8ecef 30%,#d2d8dd 58%,#b0b8bf 80%,#8f979f 100%);
     border:1px solid var(--rule);border-radius:14px;
     padding:1.75rem 1.6rem 2rem;display:flex;flex-direction:column;position:relative;
     height:100%;color:var(--ink);
@@ -210,7 +210,7 @@
 
   /* Premium : même dégradé, la plus claire des trois. */
   .carte.option{
-    background:linear-gradient(180deg,#c3c9cf 0%,#b9c0c6 30%,#aab1b8 58%,#9ca4ab 80%,#8f979f 100%);
+    background:linear-gradient(180deg,#aab1b8 0%,#c3c9cf 30%,#dde1e5 58%,#eff1f3 80%,#f7f8f9 100%);
     border-style:dashed;
   }
 
@@ -224,9 +224,12 @@
     border-radius:999px;padding:.28rem .7rem;
   }
 
+  /* Titre de formule en blanc. Il se pose tout en haut de la carte : côté
+     foncé sur Acquisition et Conversion (2,96), côté clair sur la Premium
+     qui tourne à contresens (2,17) — c'est là qu'il est le plus faible. */
   .carte h3{
     font-size:1.25rem;font-weight:800;letter-spacing:-.02em;
-    line-height:1.25;margin:0 0 .6rem;min-height:2.5em;
+    line-height:1.25;margin:0 0 .6rem;min-height:2.5em;color:#fff;
   }
 
   .carte-desc{color:var(--ink);font-size:.9375rem;margin:0 0 1.5rem;min-height:6.4em;}
