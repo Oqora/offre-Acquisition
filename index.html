@@ -58,13 +58,28 @@
   }
 
   .bande{padding:clamp(3.5rem,9vw,6rem) 0;}
-  /* Bandes de section : bleu clair de la nouvelle DA, en rayon partant du
-     coin haut-droit. La rampe claire a douze fois l'amplitude d'une rampe
-     navy, donc le dégradé se voit vraiment. Aucun arrêt ne descend sous
-     #c3d5f0, plancher où le texte gris tient encore 4,92. */
+  /* Bandes de section : le dégradé de la bannière Oqora, échantillonné à ses
+     vraies positions — du bleu vif en bas à gauche au navy en haut à droite.
+     Amplitude 0,163, sept fois celle d'une rampe navy. Le blanc y va de 4,32
+     au point le plus clair à 13,06 au plus sombre. */
   .bande.teinte{
-    background:radial-gradient(125% 125% at 100% 0%,#f5f8fd 0%,#e4ecf9 40%,#d3e0f5 72%,#c3d5f0 100%);
+    background:linear-gradient(45deg,#127fc4 0%,#127dc3 15%,#1271b3 30%,#0d4f89 45%,#093467 60%,#082e5f 75%,#0a3061 100%);
+    color:#fff;
   }
+
+  .bande.teinte .eyebrow,
+  .bande.teinte h2,
+  .bande.teinte .lede,
+  .bande.teinte .g-note,
+  .bande.teinte .signature{color:#fff;}
+
+  /* Sur ce bleu, un aplat navy disparaît : le bouton s'inverse. */
+  .bande.teinte .tel{background:#fff;color:#0a3061;}
+
+  /* Les blocs blancs posés dessus reprennent l'encre foncée, sinon le blanc
+     de la bande descend par héritage jusque dans leurs cellules. */
+  .bande.teinte .tableau-carte,
+  .bande.teinte .info{color:var(--ink);}
 
   /* ---------- en-tête ---------- */
 
@@ -118,7 +133,8 @@
 
   /* Bloc d'essai : exactement le dégradé des bandes de section. */
   .essai{
-    background:radial-gradient(125% 125% at 100% 0%,#f5f8fd 0%,#e4ecf9 40%,#d3e0f5 72%,#c3d5f0 100%);
+    background:linear-gradient(45deg,#127fc4 0%,#127dc3 15%,#1271b3 30%,#0d4f89 45%,#093467 60%,#082e5f 75%,#0a3061 100%);
+    color:#fff;
     border-radius:16px;
     padding:clamp(1.75rem,4vw,2.5rem);margin-top:clamp(2.5rem,6vw,3.5rem);
   }
@@ -175,7 +191,11 @@
   .bonus p{margin:0;font-size:.9375rem;color:var(--ink-soft);}
   .bonus strong{color:var(--ink);font-weight:700;}
 
-  .essai-note{margin:1.5rem 0 0;font-size:.8125rem;color:var(--ink-soft);}
+  .essai-note{margin:1.5rem 0 0;font-size:.8125rem;color:#fff;}
+
+  /* Les blocs blancs du bloc d'essai reprennent l'encre foncée. */
+  .essai-etapes li,
+  .bonus{color:var(--ink);}
 
   /* première section centrée, sauf le bandeau d'essai */
   .accroche{text-align:center;}
