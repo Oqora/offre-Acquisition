@@ -25,12 +25,13 @@
     --rule:#dde1e5;
     --rule-strong:#c4cad0;
 
-    /* Platine Oqora, échelle achromatique : la hiérarchie se fait
-       par la valeur et par la graisse, jamais par la teinte. */
-    --accent:#40464c;
-    --accent-ink:#33383d;
-    --accent-wash:#eff1f3;
-    --accent-light:#8d959d;
+    /* Platine Oqora pour les surfaces et le texte ; le bleu de la nouvelle
+       direction artistique tient les quatre emplacements d'accent. Valeurs
+       relevées dans les fichiers du dossier « DA oqora ». */
+    --accent:#12203b;
+    --accent-ink:#17325e;
+    --accent-wash:#eef2f8;
+    --accent-light:#6d8cba;
 
     --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --display:Montserrat,"Avenir Next",Futura,-apple-system,BlinkMacSystemFont,sans-serif;
@@ -48,12 +49,12 @@
 
   .wrap{max-width:1060px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem);}
 
-  /* Signature de marque, reprise de la barre latérale du CRM. Employé une
-     seule fois dans la page, en filet net de 4 px : jamais en fond de
-     section, et jamais sous du texte. */
+  /* Signature de marque : le dégradé bleu de la nouvelle DA, en filet net
+     de 4 px. Employé une seule fois, jamais en fond de section, jamais
+     sous du texte. */
   .filet-marque{
     height:4px;
-    background:linear-gradient(90deg,#c3c9cf 0%,#aab1b8 30%,#8f979f 58%,#767e87 80%,#5f676f 100%);
+    background:linear-gradient(90deg,#2f6fe0 0%,#1f4e9e 40%,#17325e 72%,#0b1733 100%);
   }
 
   .bande{padding:clamp(3.5rem,9vw,6rem) 0;}
