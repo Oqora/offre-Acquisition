@@ -58,12 +58,12 @@
   }
 
   .bande{padding:clamp(3.5rem,9vw,6rem) 0;}
-  /* Bandes de section : le dégradé de la bannière Oqora, échantillonné à ses
-     vraies positions — du bleu vif en bas à gauche au navy en haut à droite.
-     Amplitude 0,163, sept fois celle d'une rampe navy. Le blanc y va de 4,32
-     au point le plus clair à 13,06 au plus sombre. */
+  /* Bandes de section : le navy de la DA, éclairci vers le blanc au coin
+     haut-droit plutôt que remplacé par un bleu plus vif. Même rayon que les
+     cartes. Amplitude 0,162, soit autant que la bannière, mais sans changer
+     de bleu. Le blanc y tient de 4,75 au point le plus clair à 17,73. */
   .bande.teinte{
-    background:linear-gradient(45deg,#127fc4 0%,#127dc3 15%,#1271b3 30%,#0d4f89 45%,#093467 60%,#082e5f 75%,#0a3061 100%);
+    background:radial-gradient(125% 125% at 100% 0%,#617492 0%,#41577b 25%,#17325e 55%,#12203b 80%,#0b1733 100%);
     color:#fff;
   }
 
@@ -133,7 +133,7 @@
 
   /* Bloc d'essai : exactement le dégradé des bandes de section. */
   .essai{
-    background:linear-gradient(45deg,#127fc4 0%,#127dc3 15%,#1271b3 30%,#0d4f89 45%,#093467 60%,#082e5f 75%,#0a3061 100%);
+    background:radial-gradient(125% 125% at 100% 0%,#617492 0%,#41577b 25%,#17325e 55%,#12203b 80%,#0b1733 100%);
     color:#fff;
     border-radius:16px;
     padding:clamp(1.75rem,4vw,2.5rem);margin-top:clamp(2.5rem,6vw,3.5rem);
