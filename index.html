@@ -63,9 +63,14 @@
      cartes. Amplitude 0,162, soit autant que la bannière, mais sans changer
      de bleu. Le blanc y tient de 4,75 au point le plus clair à 17,73. */
   .bande.teinte{
-    background:radial-gradient(125% 125% at 100% 0%,#617492 0%,#41577b 25%,#17325e 55%,#12203b 80%,#0b1733 100%);
+    background:radial-gradient(125% 125% at 100% 0%,#2e64bc 0%,#224a8b 25%,#17325e 55%,#12203b 80%,#0b1733 100%);
     color:#fff;
   }
+
+  /* Or de la DA, relevé sur les captures : #c9a156. Il tient 7,61 sur le
+     navy, mais seulement 2,33 sur blanc — d'où son emploi limité aux
+     sections bleues. */
+  .or{color:#c9a156;}
 
   .bande.teinte .eyebrow,
   .bande.teinte h2,
@@ -133,7 +138,7 @@
 
   /* Bloc d'essai : exactement le dégradé des bandes de section. */
   .essai{
-    background:radial-gradient(125% 125% at 100% 0%,#617492 0%,#41577b 25%,#17325e 55%,#12203b 80%,#0b1733 100%);
+    background:radial-gradient(125% 125% at 100% 0%,#2e64bc 0%,#224a8b 25%,#17325e 55%,#12203b 80%,#0b1733 100%);
     color:#fff;
     border-radius:16px;
     padding:clamp(1.75rem,4vw,2.5rem);margin-top:clamp(2.5rem,6vw,3.5rem);
@@ -433,7 +438,7 @@
 
     <div class="essai" id="essai">
       <div class="essai-tete">
-        <h2>Commencez par 14 jours offerts.</h2>
+        <h2>Commencez par <span class="or">14 jours offerts.</span></h2>
         <span class="essai-places">3 places par mois</span>
       </div>
       <ul class="essai-etapes">
@@ -531,7 +536,7 @@
 <section class="bande teinte">
   <div class="wrap">
     <p class="eyebrow">Le variable</p>
-    <h2>Vous ne payez que les personnes venues.</h2>
+    <h2>Vous ne payez que <span class="or">les personnes venues.</span></h2>
     <p class="lede">
       Chaque rendez-vous honor&eacute; vous co&ucirc;te la moiti&eacute; du prix de votre s&eacute;ance d&eacute;couverte,
       jamais moins de 15&nbsp;&euro; ni plus de 30&nbsp;&euro;. Ni les prospects, ni les rendez-vous pos&eacute;s :
