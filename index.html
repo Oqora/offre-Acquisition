@@ -130,11 +130,11 @@
 
   /* ---------- bandeau essai ---------- */
 
-  /* Surfaces posées sur du blanc : même rampe, décalée d'un cran vers le bas
-     pour garder leur bord visible contre la page. Le dégradé suit le grand
-     axe de la surface — horizontal ici, vertical sur les cartes. */
+  /* Bloc d'essai : exactement le dégradé des bandes de section — mêmes
+     arrêts, même rayon depuis le coin haut-droit, même intensité. */
   .essai{
-    background:linear-gradient(90deg,#eff1f3 0%,#e6e9ec 30%,#dde1e5 58%,#d2d7dc 80%,#c9cfd5 100%);
+    background:radial-gradient(125% 125% at 100% 0%,#17325e 0%,#12203b 55%,#0b1733 100%);
+    color:#fff;
     border-radius:16px;
     padding:clamp(1.75rem,4vw,2.5rem);margin-top:clamp(2.5rem,6vw,3.5rem);
   }
@@ -191,7 +191,13 @@
   .bonus p{margin:0;font-size:.9375rem;color:var(--ink-soft);}
   .bonus strong{color:var(--ink);font-weight:700;}
 
-  .essai-note{margin:1.5rem 0 0;font-size:.8125rem;color:var(--ink-soft);}
+  /* Cette note est posée à même le navy : encre claire. */
+  .essai-note{margin:1.5rem 0 0;font-size:.8125rem;color:#c3d3ee;}
+
+  /* Les blocs blancs du bloc d'essai reprennent l'encre foncée, sinon le
+     blanc du bloc descend par héritage dans leur contenu. */
+  .essai-etapes li,
+  .bonus{color:var(--ink);}
 
   /* première section centrée, sauf le bandeau d'essai */
   .accroche{text-align:center;}
