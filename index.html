@@ -33,6 +33,12 @@
     --accent-wash:#eef2f8;
     --accent-light:#6d8cba;
 
+    /* Bleu des gros textes, et le jaune doré : lumineux sur navy,
+       un cran plus profond sur fond clair où il doit tenir 3:1. */
+    --bleu-titre:#17325e;
+    --or:#c9a156;
+    --or-fonce:#a8863f;
+
     --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --display:Montserrat,"Avenir Next",Futura,-apple-system,BlinkMacSystemFont,sans-serif;
   }
@@ -70,10 +76,13 @@
   /* Or de la DA, relevé sur les captures : #c9a156. Il tient 7,61 sur le
      navy, mais seulement 2,33 sur blanc — d'où son emploi limité aux
      sections bleues. */
-  .or{color:#c9a156;}
+  .or{color:var(--or-fonce);}
+  .bande.teinte .or,
+  .essai .or{color:var(--or);}
 
   .bande.teinte .eyebrow,
   .bande.teinte h2,
+  .bande.teinte .g-chiffre,
   .bande.teinte .lede,
   .bande.teinte .g-note,
   .bande.teinte .signature{color:#fff;}
@@ -122,14 +131,17 @@
     color:var(--accent-ink);font-weight:700;margin:0 0 1rem;
   }
 
+  /* Les gros textes en gras portent le bleu de la DA. */
   h1{
     font-size:clamp(2.1rem,5.5vw,3.25rem);font-weight:800;letter-spacing:-.035em;
     line-height:1.05;text-wrap:balance;margin:0 0 1rem;max-width:18ch;
+    color:var(--bleu-titre);
   }
 
   h2{
     font-size:clamp(1.6rem,4vw,2.1rem);font-weight:800;letter-spacing:-.03em;
     line-height:1.12;text-wrap:balance;margin:0 0 .85rem;max-width:22ch;
+    color:var(--bleu-titre);
   }
 
   .lede{font-size:1.0625rem;color:var(--ink-soft);max-width:54ch;margin:0;}
@@ -261,7 +273,7 @@
      « Acquisition + Conversion » tienne sur une seule ligne. */
   .carte h3{
     font-size:1.1875rem;font-weight:800;letter-spacing:-.022em;
-    line-height:1.3;margin:0 0 .6rem;min-height:2.6em;color:var(--ink);
+    line-height:1.3;margin:0 0 .6rem;min-height:2.6em;color:var(--bleu-titre);
   }
 
   .carte-desc{color:var(--ink-soft);font-size:.9375rem;font-weight:500;margin:0 0 1.5rem;min-height:6.4em;}
@@ -273,7 +285,7 @@
   .prix{
     font-family:var(--display);
     font-size:clamp(2.2rem,5vw,2.75rem);font-weight:700;letter-spacing:-.025em;
-    line-height:1;font-variant-numeric:tabular-nums;margin:0;color:var(--ink);
+    line-height:1;font-variant-numeric:tabular-nums;margin:0;color:var(--bleu-titre);
   }
 
   /* Ces quatre mentions descendent la carte jusqu'à son arrêt le plus sombre :
@@ -344,6 +356,7 @@
   .montant{
     display:block;font-size:clamp(1.35rem,3.4vw,1.6rem);font-weight:800;
     letter-spacing:-.035em;line-height:1.1;white-space:nowrap;
+    color:var(--bleu-titre);
   }
 
   .ttc-min{display:block;font-size:.75rem;font-weight:500;color:var(--ink-faint);margin-top:.3rem;white-space:nowrap;}
@@ -377,6 +390,7 @@
   .g-chiffre{
     font-size:clamp(2rem,5vw,2.6rem);font-weight:800;letter-spacing:-.045em;
     line-height:1;font-variant-numeric:tabular-nums;justify-self:end;
+    color:var(--bleu-titre);
   }
 
   .g-chiffre.accent{color:var(--accent);}
@@ -432,7 +446,7 @@
 <section class="bande">
   <div class="wrap accroche">
     <p class="eyebrow">Centres esthétiques</p>
-    <h1>Votre agenda rempli. Ou vous ne payez pas.</h1>
+    <h1>Votre agenda rempli. <span class="or">Ou vous ne payez pas.</span></h1>
     <p class="lede">
       On génère vos prospects, on les appelle, on cale les rendez-vous.
       Vous vous occupez de vos soins.
@@ -474,7 +488,7 @@
 <section class="bande">
   <div class="wrap">
     <p class="eyebrow">Nos offres</p>
-    <h2>Trois formules, selon ce que vous voulez déléguer.</h2>
+    <h2>Trois formules, <span class="or">selon ce que vous voulez déléguer.</span></h2>
 
     <div class="cartes">
 
@@ -585,7 +599,7 @@
 <section class="bande">
   <div class="wrap">
     <p class="eyebrow">Notre garantie</p>
-    <h2>Un engagement clair sur vos résultats.</h2>
+    <h2>Un engagement clair <span class="or">sur vos résultats.</span></h2>
 
     <div class="garantie">
       <div class="g-ligne">
