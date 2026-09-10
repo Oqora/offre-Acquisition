@@ -58,11 +58,27 @@
   }
 
   .bande{padding:clamp(3.5rem,9vw,6rem) 0;}
-  /* Bandes grises : le dégradé du CRM, mêmes arrêts et même sens, remonté
-     en haut de l'échelle platine pour que l'encre garde son contraste. */
+  /* Bandes de section : navy de la nouvelle DA, en rayon partant du coin
+     haut-droit — même géométrie que les cartes, registre sombre. Toutes les
+     encres s'y inversent : blanc à 12,69 sur l'arrêt le plus clair. */
   .bande.teinte{
-    background:linear-gradient(90deg,#f7f8f9 0%,#eff1f3 30%,#e6e9ec 58%,#dde1e5 80%,#d2d7dc 100%);
+    background:radial-gradient(125% 125% at 100% 0%,#17325e 0%,#12203b 55%,#0b1733 100%);
+    color:#fff;
   }
+
+  .bande.teinte .eyebrow{color:#9fbdf0;}
+  .bande.teinte h2{color:#fff;}
+  .bande.teinte .lede{color:#dbe4f4;}
+  .bande.teinte .g-note{color:#c3d3ee;}
+  .bande.teinte .signature{color:#c3d3ee;}
+
+  /* Sur du navy, un bouton navy disparaît : il s'inverse. */
+  .bande.teinte .tel{background:#fff;color:#0b1733;}
+
+  /* Les blocs blancs posés sur la bande reprennent l'encre foncée : sans ça
+     le blanc de la bande descend par héritage jusque dans leurs cellules. */
+  .bande.teinte .tableau-carte,
+  .bande.teinte .info{color:var(--ink);}
 
   /* ---------- en-tête ---------- */
 
