@@ -58,27 +58,13 @@
   }
 
   .bande{padding:clamp(3.5rem,9vw,6rem) 0;}
-  /* Bandes de section : navy de la nouvelle DA, en rayon partant du coin
-     haut-droit — même géométrie que les cartes, registre sombre. Toutes les
-     encres s'y inversent : blanc à 12,69 sur l'arrêt le plus clair. */
+  /* Bandes de section : bleu clair de la nouvelle DA, en rayon partant du
+     coin haut-droit. La rampe claire a douze fois l'amplitude d'une rampe
+     navy, donc le dégradé se voit vraiment. Aucun arrêt ne descend sous
+     #c3d5f0, plancher où le texte gris tient encore 4,92. */
   .bande.teinte{
-    background:radial-gradient(125% 125% at 100% 0%,#17325e 0%,#12203b 55%,#0b1733 100%);
-    color:#fff;
+    background:radial-gradient(125% 125% at 100% 0%,#f5f8fd 0%,#e4ecf9 40%,#d3e0f5 72%,#c3d5f0 100%);
   }
-
-  .bande.teinte .eyebrow{color:#9fbdf0;}
-  .bande.teinte h2{color:#fff;}
-  .bande.teinte .lede{color:#dbe4f4;}
-  .bande.teinte .g-note{color:#c3d3ee;}
-  .bande.teinte .signature{color:#c3d3ee;}
-
-  /* Sur du navy, un bouton navy disparaît : il s'inverse. */
-  .bande.teinte .tel{background:#fff;color:#0b1733;}
-
-  /* Les blocs blancs posés sur la bande reprennent l'encre foncée : sans ça
-     le blanc de la bande descend par héritage jusque dans leurs cellules. */
-  .bande.teinte .tableau-carte,
-  .bande.teinte .info{color:var(--ink);}
 
   /* ---------- en-tête ---------- */
 
@@ -130,11 +116,9 @@
 
   /* ---------- bandeau essai ---------- */
 
-  /* Bloc d'essai : exactement le dégradé des bandes de section — mêmes
-     arrêts, même rayon depuis le coin haut-droit, même intensité. */
+  /* Bloc d'essai : exactement le dégradé des bandes de section. */
   .essai{
-    background:radial-gradient(125% 125% at 100% 0%,#17325e 0%,#12203b 55%,#0b1733 100%);
-    color:#fff;
+    background:radial-gradient(125% 125% at 100% 0%,#f5f8fd 0%,#e4ecf9 40%,#d3e0f5 72%,#c3d5f0 100%);
     border-radius:16px;
     padding:clamp(1.75rem,4vw,2.5rem);margin-top:clamp(2.5rem,6vw,3.5rem);
   }
@@ -191,13 +175,7 @@
   .bonus p{margin:0;font-size:.9375rem;color:var(--ink-soft);}
   .bonus strong{color:var(--ink);font-weight:700;}
 
-  /* Cette note est posée à même le navy : encre claire. */
-  .essai-note{margin:1.5rem 0 0;font-size:.8125rem;color:#c3d3ee;}
-
-  /* Les blocs blancs du bloc d'essai reprennent l'encre foncée, sinon le
-     blanc du bloc descend par héritage dans leur contenu. */
-  .essai-etapes li,
-  .bonus{color:var(--ink);}
+  .essai-note{margin:1.5rem 0 0;font-size:.8125rem;color:var(--ink-soft);}
 
   /* première section centrée, sauf le bandeau d'essai */
   .accroche{text-align:center;}
